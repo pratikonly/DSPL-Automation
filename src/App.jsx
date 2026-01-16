@@ -311,19 +311,6 @@ export default function App() {
                                <li className="flex items-center gap-2 justify-end">Custom Domain Verification <Globe className="w-3 h-3 text-cyan-500" /></li>
                              </ul>
                            </div>
-                         ) : step.id === '3' ? (
-                           <div className="space-y-4">
-                             <p className="text-zinc-500 text-sm font-medium leading-relaxed">
-                               AI Matching Engine for high-intent job alignment.
-                             </p>
-                             <ul className="space-y-2 text-[11px] text-zinc-600 font-bold uppercase tracking-wider">
-                               {step.intelligence.map((item, i) => (
-                                 <li key={i} className="flex items-center gap-2 justify-end">
-                                   {item} <Zap className="w-3 h-3 text-cyan-500" />
-                                 </li>
-                               ))}
-                             </ul>
-                           </div>
                          ) : step.id === '4' ? (
                            <div className="space-y-4">
                              <p className="text-zinc-500 text-sm font-medium leading-relaxed">
@@ -331,8 +318,8 @@ export default function App() {
                              </p>
                              <ul className="space-y-2 text-[11px] text-zinc-600 font-bold uppercase tracking-wider">
                                {step.intelligence.map((item, i) => (
-                                 <li key={i} className="flex items-center gap-2">
-                                   <Zap className="w-3 h-3 text-orange-500" /> {item}
+                                 <li key={i} className="flex items-center gap-2 justify-end">
+                                   {item} <Zap className="w-3 h-3 text-orange-500" />
                                  </li>
                                ))}
                              </ul>
@@ -419,6 +406,32 @@ export default function App() {
 }`}</pre>
                              </div>
                            </div>
+                         ) : step.id === '3' ? (
+                           <div className="space-y-4">
+                             <p className="text-zinc-500 text-sm font-medium leading-relaxed">
+                               AI Matching Engine for high-intent job alignment.
+                             </p>
+                             <ul className="space-y-2 text-[11px] text-zinc-600 font-bold uppercase tracking-wider">
+                               {step.intelligence.map((item, i) => (
+                                 <li key={i} className="flex items-center gap-2">
+                                   <Zap className="w-3 h-3 text-cyan-500" /> {item}
+                                 </li>
+                               ))}
+                             </ul>
+                           </div>
+                         ) : step.id === '4' ? (
+                            <div className="space-y-4">
+                              <p className="text-zinc-500 text-sm font-medium leading-relaxed">
+                                Multi-channel engagement & intent verification.
+                              </p>
+                              <ul className="space-y-2 text-[11px] text-zinc-600 font-bold uppercase tracking-wider">
+                                {step.intelligence.map((item, i) => (
+                                  <li key={i} className="flex items-center gap-2">
+                                    <Zap className="w-3 h-3 text-orange-500" /> {item}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
                          ) : step.id === '0' ? (
                            <div className="space-y-4">
                              <p className="text-zinc-500 text-sm font-medium leading-relaxed">
