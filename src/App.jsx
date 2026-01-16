@@ -328,9 +328,24 @@ export default function App() {
                         className="p-8 text-left"
                       >
                          <h4 className="text-[11px] font-black text-zinc-700 uppercase tracking-[0.3em] mb-4">Core Infrastructure</h4>
-                         <p className="text-zinc-500 text-sm font-medium leading-relaxed">
-                            Implementing high-fidelity data extraction and semantic mapping allows for {step.title.toLowerCase()} with unparalleled precision.
-                         </p>
+                         {step.id === '0' ? (
+                           <div className="space-y-4">
+                             <p className="text-zinc-500 text-sm font-medium leading-relaxed">
+                               Full-stack deployment pipeline with automated GitHub-to-Vercel CI/CD.
+                             </p>
+                             <ul className="space-y-2 text-[11px] text-zinc-600 font-bold uppercase tracking-wider">
+                               <li className="flex items-center gap-2">Admin Dashboard with CV Upload <LayoutDashboard className="w-3 h-3 text-blue-500" /></li>
+                               <li className="flex items-center gap-2">Real-time CV Approval Logic <CheckCircle className="w-3 h-3 text-emerald-500" /></li>
+                               <li className="flex items-center gap-2">Job List Management <ListChecks className="w-3 h-3 text-indigo-500" /></li>
+                               <li className="flex items-center gap-2">Vercel Password Protection <Lock className="w-3 h-3 text-red-500" /></li>
+                               <li className="flex items-center gap-2">Custom Domain Verification <Globe className="w-3 h-3 text-cyan-500" /></li>
+                             </ul>
+                           </div>
+                         ) : (
+                           <p className="text-zinc-500 text-sm font-medium leading-relaxed">
+                              Implementing high-fidelity data extraction and semantic mapping allows for {step.title.toLowerCase()} with unparalleled precision.
+                           </p>
+                         )}
                       </motion.div>
                     </div>
                   )}
