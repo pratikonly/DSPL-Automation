@@ -157,6 +157,13 @@ const steps = [
       'Human-in-the-loop verification gate',
       'Audit log for every admin decision',
       'Final progression lock for Phase 3'
+    ],
+    intelligence: [
+      'Human-in-the-loop checkpoint',
+      'Validation of AI recommendations',
+      'Candidate response verification',
+      'Approve/Reject/Hold logic',
+      'Error prevention & compliance'
     ]
   },
   {
@@ -405,6 +412,19 @@ export default function App() {
   "age": null
 }`}</pre>
                              </div>
+                           </div>
+                         ) : step.id === '5' ? (
+                           <div className="space-y-4">
+                             <p className="text-zinc-500 text-sm font-medium leading-relaxed">
+                               Human-in-the-loop validation & decision gateway.
+                             </p>
+                             <ul className="space-y-2 text-[11px] text-zinc-600 font-bold uppercase tracking-wider">
+                               {step.intelligence.map((item, i) => (
+                                 <li key={i} className="flex items-center gap-2 justify-end">
+                                   {item} <Zap className="w-3 h-3 text-emerald-500" />
+                                 </li>
+                               ))}
+                             </ul>
                            </div>
                          ) : step.id === '3' ? (
                            <div className="space-y-4">
