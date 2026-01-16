@@ -273,9 +273,10 @@ export default function App() {
                   </motion.div>
                 </div>
 
-                {/* Content Logic */}
-                <div className={`${step.side === 'left' ? 'lg:order-1' : 'lg:order-1'}`}>
+                {/* Left Column */}
+                <div className="lg:order-1">
                   {step.side === 'left' ? (
+                    /* Main Card on Left */
                     <motion.div 
                       initial={{ opacity: 0, x: -60 }}
                       whileInView={{ opacity: 1, x: 0 }}
@@ -297,6 +298,7 @@ export default function App() {
                       <TechnicalSpecs items={step.technical} side="left" />
                     </motion.div>
                   ) : (
+                    /* Info Panel on Left (for Right-side cards) */
                     <div className="hidden lg:block">
                       <motion.div
                         initial={{ opacity: 0, x: -30 }}
@@ -304,34 +306,8 @@ export default function App() {
                         viewport={{ once: true }}
                         className="p-8 text-right"
                       >
-                         <h4 className="text-[11px] font-black text-zinc-700 uppercase tracking-[0.3em] mb-4">Core Infrastructure</h4>
-                         {step.id === '0' ? (
-                           <div className="space-y-4">
-                             <p className="text-zinc-500 text-sm font-medium leading-relaxed">
-                               Full-stack deployment pipeline with automated GitHub-to-Vercel CI/CD.
-                             </p>
-                             <ul className="space-y-2 text-[11px] text-zinc-600 font-bold uppercase tracking-wider">
-                               <li className="flex items-center gap-2 justify-end">Admin Dashboard with CV Upload <LayoutDashboard className="w-3 h-3 text-blue-500" /></li>
-                               <li className="flex items-center gap-2 justify-end">Real-time CV Approval Logic <CheckCircle className="w-3 h-3 text-emerald-500" /></li>
-                               <li className="flex items-center gap-2 justify-end">Job List Management <ListChecks className="w-3 h-3 text-indigo-500" /></li>
-                               <li className="flex items-center gap-2 justify-end">Vercel Password Protection <Lock className="w-3 h-3 text-red-500" /></li>
-                               <li className="flex items-center gap-2 justify-end">Custom Domain Verification <Globe className="w-3 h-3 text-cyan-500" /></li>
-                             </ul>
-                           </div>
-                         ) : step.id === '4' ? (
-                           <div className="space-y-4">
-                             <p className="text-zinc-500 text-sm font-medium leading-relaxed">
-                               Multi-channel engagement & intent verification.
-                             </p>
-                             <ul className="space-y-2 text-[11px] text-zinc-600 font-bold uppercase tracking-wider">
-                               {step.intelligence.map((item, i) => (
-                                 <li key={i} className="flex items-center gap-2 justify-end">
-                                   {item} <Zap className="w-3 h-3 text-orange-500" />
-                                 </li>
-                               ))}
-                             </ul>
-                           </div>
-                         ) : step.id === '1' ? (
+                         <h4 className="text-[11px] font-black text-zinc-700 uppercase tracking-[0.3em] mb-4">Strategic Intelligence</h4>
+                         {step.id === '1' ? (
                            <div className="space-y-4">
                              <p className="text-zinc-500 text-sm font-medium leading-relaxed">
                                AI-Assisted Resume Understanding & Data Normalization Engine.
@@ -340,6 +316,32 @@ export default function App() {
                                {step.intelligence.map((item, i) => (
                                  <li key={i} className="flex items-center gap-2 justify-end">
                                    {item} <Zap className="w-3 h-3 text-indigo-500" />
+                                 </li>
+                               ))}
+                             </ul>
+                           </div>
+                         ) : step.id === '3' ? (
+                           <div className="space-y-4">
+                             <p className="text-zinc-500 text-sm font-medium leading-relaxed">
+                               AI Matching Engine for high-intent job alignment.
+                             </p>
+                             <ul className="space-y-2 text-[11px] text-zinc-600 font-bold uppercase tracking-wider">
+                               {step.intelligence.map((item, i) => (
+                                 <li key={i} className="flex items-center gap-2 justify-end">
+                                   {item} <Zap className="w-3 h-3 text-cyan-500" />
+                                 </li>
+                               ))}
+                             </ul>
+                           </div>
+                         ) : step.id === '5' ? (
+                           <div className="space-y-4 text-right">
+                             <p className="text-zinc-500 text-sm font-medium leading-relaxed">
+                               Human-in-the-loop validation & decision gateway.
+                             </p>
+                             <ul className="space-y-2 text-[11px] text-zinc-600 font-bold uppercase tracking-wider">
+                               {step.intelligence.map((item, i) => (
+                                 <li key={i} className="flex items-center gap-2 justify-end">
+                                   {item} <Zap className="w-3 h-3 text-emerald-500" />
                                  </li>
                                ))}
                              </ul>
@@ -354,8 +356,10 @@ export default function App() {
                   )}
                 </div>
 
-                <div className={`${step.side === 'right' ? 'lg:order-2' : 'lg:order-2'}`}>
+                {/* Right Column */}
+                <div className="lg:order-2">
                   {step.side === 'right' ? (
+                    /* Main Card on Right */
                     <motion.div 
                       initial={{ opacity: 0, x: 60 }}
                       whileInView={{ opacity: 1, x: 0 }}
@@ -377,6 +381,7 @@ export default function App() {
                       <TechnicalSpecs items={step.technical} side="right" />
                     </motion.div>
                   ) : (
+                    /* Info Panel on Right (for Left-side cards) */
                     <div className="hidden lg:block">
                       <motion.div
                         initial={{ opacity: 0, x: 30 }}
@@ -385,7 +390,20 @@ export default function App() {
                         className="p-8 text-left"
                       >
                          <h4 className="text-[11px] font-black text-zinc-700 uppercase tracking-[0.3em] mb-4">Core Infrastructure</h4>
-                         {step.id === '2' ? (
+                         {step.id === '0' ? (
+                           <div className="space-y-4 text-left">
+                             <p className="text-zinc-500 text-sm font-medium leading-relaxed">
+                               Full-stack deployment pipeline with automated GitHub-to-Vercel CI/CD.
+                             </p>
+                             <ul className="space-y-2 text-[11px] text-zinc-600 font-bold uppercase tracking-wider">
+                               <li className="flex items-center gap-2">Admin Dashboard with CV Upload <LayoutDashboard className="w-3 h-3 text-blue-500" /></li>
+                               <li className="flex items-center gap-2">Real-time CV Approval Logic <CheckCircle className="w-3 h-3 text-emerald-500" /></li>
+                               <li className="flex items-center gap-2">Job List Management <ListChecks className="w-3 h-3 text-indigo-500" /></li>
+                               <li className="flex items-center gap-2">Vercel Password Protection <Lock className="w-3 h-3 text-red-500" /></li>
+                               <li className="flex items-center gap-2">Custom Domain Verification <Globe className="w-3 h-3 text-cyan-500" /></li>
+                             </ul>
+                           </div>
+                         ) : step.id === '2' ? (
                            <div className="space-y-4">
                              <p className="text-zinc-500 text-[10px] font-black uppercase tracking-widest mb-2">Output Schema Example</p>
                              <div className="bg-zinc-900/80 border border-zinc-800 rounded-xl p-4 font-mono text-[10px] text-blue-400 overflow-x-auto shadow-inner">
@@ -413,35 +431,9 @@ export default function App() {
 }`}</pre>
                              </div>
                            </div>
-                         ) : step.id === '5' ? (
-                           <div className="space-y-4">
-                             <p className="text-zinc-500 text-sm font-medium leading-relaxed">
-                               Human-in-the-loop validation & decision gateway.
-                             </p>
-                             <ul className="space-y-2 text-[11px] text-zinc-600 font-bold uppercase tracking-wider">
-                               {step.intelligence.map((item, i) => (
-                                 <li key={i} className="flex items-center gap-2 justify-end">
-                                   {item} <Zap className="w-3 h-3 text-emerald-500" />
-                                 </li>
-                               ))}
-                             </ul>
-                           </div>
-                         ) : step.id === '3' ? (
-                           <div className="space-y-4">
-                             <p className="text-zinc-500 text-sm font-medium leading-relaxed">
-                               AI Matching Engine for high-intent job alignment.
-                             </p>
-                             <ul className="space-y-2 text-[11px] text-zinc-600 font-bold uppercase tracking-wider">
-                               {step.intelligence.map((item, i) => (
-                                 <li key={i} className="flex items-center gap-2">
-                                   <Zap className="w-3 h-3 text-cyan-500" /> {item}
-                                 </li>
-                               ))}
-                             </ul>
-                           </div>
                          ) : step.id === '4' ? (
-                            <div className="space-y-4">
-                              <p className="text-zinc-500 text-sm font-medium leading-relaxed">
+                            <div className="space-y-4 text-left">
+                              <p className="text-zinc-500 text-sm font-medium leading-relaxed text-balance">
                                 Multi-channel engagement & intent verification.
                               </p>
                               <ul className="space-y-2 text-[11px] text-zinc-600 font-bold uppercase tracking-wider">
@@ -452,19 +444,6 @@ export default function App() {
                                 ))}
                               </ul>
                             </div>
-                         ) : step.id === '0' ? (
-                           <div className="space-y-4">
-                             <p className="text-zinc-500 text-sm font-medium leading-relaxed">
-                               Full-stack deployment pipeline with automated GitHub-to-Vercel CI/CD.
-                             </p>
-                             <ul className="space-y-2 text-[11px] text-zinc-600 font-bold uppercase tracking-wider">
-                               <li className="flex items-center gap-2">Admin Dashboard with CV Upload <LayoutDashboard className="w-3 h-3 text-blue-500" /></li>
-                               <li className="flex items-center gap-2">Real-time CV Approval Logic <CheckCircle className="w-3 h-3 text-emerald-500" /></li>
-                               <li className="flex items-center gap-2">Job List Management <ListChecks className="w-3 h-3 text-indigo-500" /></li>
-                               <li className="flex items-center gap-2">Vercel Password Protection <Lock className="w-3 h-3 text-red-500" /></li>
-                               <li className="flex items-center gap-2">Custom Domain Verification <Globe className="w-3 h-3 text-cyan-500" /></li>
-                             </ul>
-                           </div>
                          ) : (
                            <p className="text-zinc-500 text-sm font-medium leading-relaxed">
                               Implementing high-fidelity data extraction and semantic mapping allows for {step.title.toLowerCase()} with unparalleled precision.
