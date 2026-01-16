@@ -124,10 +124,18 @@ const steps = [
       { label: 'Intent', value: 'YES/NO Capture Engine', icon: CheckCircle }
     ],
     technical: [
-      'Automated job notifications (Bulk/Single)',
-      'Pre-approved WhatsApp template triggers',
-      'Real-time response status dashboard',
-      'Candidate reply capture & storage'
+      'SMTP Auth: Company official domain relay',
+      'WhatsApp Business Cloud API v20.0',
+      'Webhook capture for real-time replies',
+      'Immutable message & status logging',
+      'Auto-transition based on YES/NO intent'
+    ],
+    intelligence: [
+      'Admin-triggered sending only (No Auto-spam)',
+      'Pre-approved non-editable templates',
+      'Capture candidate YES/NO interest intent',
+      'Live Response Status in Dashboard',
+      'Traceable: Full communication audit trail'
     ]
   },
   {
@@ -312,6 +320,19 @@ export default function App() {
                                {step.intelligence.map((item, i) => (
                                  <li key={i} className="flex items-center gap-2 justify-end">
                                    {item} <Zap className="w-3 h-3 text-cyan-500" />
+                                 </li>
+                               ))}
+                             </ul>
+                           </div>
+                         ) : step.id === '4' ? (
+                           <div className="space-y-4">
+                             <p className="text-zinc-500 text-sm font-medium leading-relaxed">
+                               Multi-channel engagement & intent verification.
+                             </p>
+                             <ul className="space-y-2 text-[11px] text-zinc-600 font-bold uppercase tracking-wider">
+                               {step.intelligence.map((item, i) => (
+                                 <li key={i} className="flex items-center gap-2">
+                                   <Zap className="w-3 h-3 text-orange-500" /> {item}
                                  </li>
                                ))}
                              </ul>
