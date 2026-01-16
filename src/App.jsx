@@ -165,18 +165,16 @@ const ConnectorLine = () => (
 );
 
 const TechnicalSpecs = ({ items, side }) => (
-  <div className={`mt-6 pt-6 border-t border-zinc-800/50 flex flex-col ${side === 'left' ? 'items-end text-right' : 'items-start text-left'}`}>
+  <div className={`mt-6 pt-6 border-t border-zinc-800/50 flex flex-col items-start text-left`}>
     <h4 className="text-[10px] font-black text-zinc-500 uppercase tracking-widest mb-4 flex items-center gap-2">
-      {side === 'right' && <ChevronRight className="w-3 h-3 text-blue-500" />}
+      <ChevronRight className="w-3 h-3 text-blue-500" />
       Technical Architecture
-      {side === 'left' && <ChevronRight className="w-3 h-3 text-blue-500 rotate-180" />}
     </h4>
     <ul className="space-y-2.5">
       {items.map((item, i) => (
         <li key={i} className="text-[11px] text-zinc-400 font-medium flex items-center gap-2 group/item">
-          {side === 'right' && <div className="w-1.5 h-1.5 rounded-full bg-blue-500/30 group-hover/item:bg-blue-500 transition-colors" />}
+          <div className="w-1.5 h-1.5 rounded-full bg-blue-500/30 group-hover/item:bg-blue-500 transition-colors" />
           {item}
-          {side === 'left' && <div className="w-1.5 h-1.5 rounded-full bg-blue-500/30 group-hover/item:bg-blue-500 transition-colors" />}
         </li>
       ))}
     </ul>
@@ -184,9 +182,9 @@ const TechnicalSpecs = ({ items, side }) => (
 );
 
 const DetailGrid = ({ details, side }) => (
-  <div className={`grid grid-cols-2 gap-3 mb-6 ${side === 'left' ? 'text-right' : 'text-left'}`}>
+  <div className={`grid grid-cols-2 gap-3 mb-6`}>
     {details.map((detail, i) => (
-      <div key={i} className={`p-3 rounded-xl bg-zinc-900/50 border border-zinc-800/50 hover:border-zinc-700/50 transition-colors ${side === 'left' ? 'flex flex-row-reverse gap-3' : 'flex flex-row gap-3'}`}>
+      <div key={i} className={`p-3 rounded-xl bg-zinc-900/50 border border-zinc-800/50 hover:border-zinc-700/50 transition-colors flex flex-row gap-3`}>
         <div className="p-2 rounded-lg bg-zinc-800 text-zinc-400">
           <detail.icon className="w-4 h-4" />
         </div>
@@ -253,7 +251,7 @@ export default function App() {
                       viewport={{ once: true }}
                       className="group bg-zinc-950/80 backdrop-blur-xl p-10 rounded-[2.5rem] border border-zinc-800/80 shadow-2xl hover:border-blue-500/30 transition-all duration-700 hover:-translate-y-2"
                     >
-                      <div className="flex flex-row-reverse items-center gap-6 mb-8 text-right">
+                      <div className="flex items-center gap-6 mb-8">
                         <div className={`p-4 rounded-2xl bg-${step.color}-600/10 border border-${step.color}-500/20 text-${step.color}-400 group-hover:bg-${step.color}-500 group-hover:text-white transition-all duration-500`}>
                           <step.icon className="w-7 h-7" />
                         </div>
@@ -262,7 +260,7 @@ export default function App() {
                           <h3 className="text-2xl font-black text-white tracking-tight mt-1">{step.title}</h3>
                         </div>
                       </div>
-                      <p className="text-zinc-500 text-sm font-medium leading-relaxed mb-8 text-right italic font-serif">"{step.summary}"</p>
+                      <p className="text-zinc-500 text-sm font-medium leading-relaxed mb-8 italic font-serif">"{step.summary}"</p>
                       
                       <DetailGrid details={step.details} side="left" />
                       <TechnicalSpecs items={step.technical} side="left" />
