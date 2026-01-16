@@ -349,7 +349,35 @@ export default function App() {
                         className="p-8 text-left"
                       >
                          <h4 className="text-[11px] font-black text-zinc-700 uppercase tracking-[0.3em] mb-4">Core Infrastructure</h4>
-                         {step.id === '0' ? (
+                         {step.id === '2' ? (
+                           <div className="space-y-4">
+                             <p className="text-zinc-500 text-[10px] font-black uppercase tracking-widest mb-2">Output Schema Example</p>
+                             <div className="bg-zinc-900/80 border border-zinc-800 rounded-xl p-4 font-mono text-[10px] text-blue-400 overflow-x-auto shadow-inner">
+                               <pre>{`{
+  "name": "Amit Verma",
+  "phone": "+91XXXXXXXXXX",
+  "email": "amit@example.com",
+  "education": [
+    {
+      "degree": "B.Tech",
+      "field": "CS",
+      "institution": "ABC Uni"
+    }
+  ],
+  "experience": [
+    {
+      "role": "Backend Dev",
+      "company": "XYZ Ltd",
+      "duration": "2 years"
+    }
+  ],
+  "skills": ["Node.js", "PostgreSQL"],
+  "location": "Bangalore",
+  "age": null
+}`}</pre>
+                             </div>
+                           </div>
+                         ) : step.id === '0' ? (
                            <div className="space-y-4">
                              <p className="text-zinc-500 text-sm font-medium leading-relaxed">
                                Full-stack deployment pipeline with automated GitHub-to-Vercel CI/CD.
