@@ -3,19 +3,31 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>AI HR Automation Flow – Devtri Seczone</title>
+<title>AI HR Automation – System Flow</title>
 
 <style>
+/* =====================
+   GLOBAL DARK THEME
+===================== */
 :root {
-  --primary:#0f172a;
-  --secondary:#2563eb;
-  --bg:#f8fafc;
-  --card:#ffffff;
-  --text:#0f172a;
+  --bg:#0b0f1a;
+  --panel:#12182b;
+  --card:#161e3a;
+  --border:#2a3570;
+  --primary:#4f7cff;
+  --text:#e5e7eb;
+  --muted:#9ca3af;
+  --success:#22c55e;
+  --danger:#ef4444;
+}
+
+/* Zoom out entire site by ~20% */
+html {
+  zoom: 0.8;
 }
 
 * {
-  box-sizing:border-box;
+  box-sizing: border-box;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
@@ -25,83 +37,116 @@ body {
   color:var(--text);
 }
 
-/* Layout */
+/* =====================
+   LAYOUT
+===================== */
 .container {
   display:grid;
   grid-template-columns:1fr 2fr 1fr;
-  gap:20px;
-  padding:20px;
+  gap:24px;
+  padding:24px;
 }
 
-/* Responsive */
 @media(max-width:1024px){
   .container {
     grid-template-columns:1fr;
   }
 }
 
-/* Cards */
+/* =====================
+   PANELS & CARDS
+===================== */
 .card {
   background:var(--card);
-  border-radius:12px;
-  padding:16px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.05);
-  margin-bottom:16px;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:18px;
+  margin-bottom:18px;
 }
 
-h2 {
-  margin-top:0;
-  font-size:18px;
-  color:var(--secondary);
-}
-
-h3 {
-  margin:10px 0 5px;
+.section-title {
   font-size:15px;
+  font-weight:700;
+  color:var(--primary);
+  margin-bottom:8px;
+}
+
+.step-ref {
+  font-size:12px;
+  color:var(--muted);
+  margin-bottom:6px;
 }
 
 p, li {
-  font-size:14px;
-  line-height:1.5;
+  font-size:13px;
+  line-height:1.6;
+  color:var(--text);
 }
 
-/* Flowchart */
+ul {
+  padding-left:18px;
+}
+
+/* =====================
+   FLOWCHART
+===================== */
 .flow {
   display:flex;
   flex-direction:column;
   align-items:center;
 }
 
+.phase {
+  font-size:14px;
+  font-weight:700;
+  color:var(--primary);
+  margin:16px 0 8px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
 .step {
-  background:var(--card);
-  border:2px solid var(--secondary);
-  padding:12px 18px;
+  background:var(--panel);
+  border:2px solid var(--border);
   border-radius:30px;
+  padding:12px 22px;
   margin:8px 0;
-  font-weight:600;
+  width:92%;
   text-align:center;
-  width:90%;
+  font-size:14px;
+  font-weight:600;
 }
 
 .arrow {
   font-size:22px;
-  color:var(--secondary);
+  color:var(--muted);
 }
 
-/* Highlight */
-.highlight {
-  background:#e0e7ff;
-  padding:10px;
-  border-radius:8px;
-  margin-top:10px;
+/* Decision */
+.decision {
+  border-style:dashed;
 }
 
-/* Footer */
+.branch {
+  display:flex;
+  gap:16px;
+  width:100%;
+  justify-content:center;
+}
+
+.branch .step {
+  width:40%;
+  font-size:13px;
+}
+
+/* =====================
+   FOOTER
+===================== */
 footer {
   text-align:center;
-  padding:20px;
-  font-size:13px;
-  color:#475569;
+  padding:24px;
+  font-size:12px;
+  color:var(--muted);
 }
 </style>
 </head>
@@ -110,119 +155,163 @@ footer {
 
 <div class="container">
 
-<!-- LEFT EXPLANATION -->
+<!-- =====================
+     LEFT PANEL (INPUT & AI)
+===================== -->
 <div>
 
 <div class="card">
-<h2>📄 CV Upload & AI Parsing</h2>
-<p><b>Admin uploads CVs</b> (PDF/DOC/Scanned).</p>
+<div class="step-ref">PHASE 1 · STEP 1</div>
+<div class="section-title">CV Upload</div>
+<p>Admin uploads CV files (single or bulk).</p>
 <ul>
-<li>Text extracted from CV</li>
-<li>OCR if scanned</li>
-<li>Sent to AI for understanding</li>
+  <li>Formats: PDF, DOC, DOCX</li>
+  <li>Scanned CVs supported</li>
 </ul>
-<div class="highlight">
-<b>AI Used:</b> OpenAI GPT-4 / GPT-4o<br>
-<b>Purpose:</b> Convert messy CV into clean JSON
-</div>
 </div>
 
 <div class="card">
-<h2>🧠 AI Job Recommendation</h2>
-<p>AI compares candidate CV with job posts.</p>
+<div class="step-ref">PHASE 1 · STEP 2</div>
+<div class="section-title">Text Extraction</div>
+<p>The system determines whether the CV contains readable text.</p>
 <ul>
-<li>Skills match</li>
-<li>Experience match</li>
-<li>Location match</li>
+  <li>If text-based → direct extraction</li>
+  <li>If scanned → OCR applied</li>
 </ul>
-<div class="highlight">
-<b>Example:</b><br>
-Backend Developer → 86% match
-</div>
 </div>
 
 <div class="card">
-<h2>✋ Manual Control</h2>
-<p>Admin can ignore AI and assign job manually.</p>
+<div class="step-ref">PHASE 1 · STEP 3</div>
+<div class="section-title">AI CV Parsing</div>
+<p>Extracted text is sent to an AI model for understanding.</p>
 <ul>
-<li>Full human control</li>
-<li>No forced automation</li>
+  <li>Name, phone, email</li>
+  <li>Education and experience</li>
+  <li>Skills and location</li>
+  <li>Age only if explicitly mentioned</li>
+</ul>
+<p><b>AI Used:</b> OpenAI GPT-4 / GPT-4o</p>
+</div>
+
+<div class="card">
+<div class="step-ref">PHASE 1 · STEP 4</div>
+<div class="section-title">Candidate Profile Creation</div>
+<p>A structured candidate profile is generated and stored.</p>
+<ul>
+  <li>Status: Unassigned</li>
+  <li>Searchable and filterable</li>
 </ul>
 </div>
 
 </div>
 
-<!-- CENTER FLOWCHART -->
+<!-- =====================
+     CENTER FLOWCHART
+===================== -->
 <div class="flow">
 
-<div class="step">CV Upload</div>
-<div class="arrow">⬇</div>
+<div class="phase">Phase 1 – Candidate Processing</div>
 
-<div class="step">AI CV Parsing</div>
-<div class="arrow">⬇</div>
+<div class="step">STEP 1 · CV Upload</div>
+<div class="arrow">↓</div>
 
-<div class="step">Candidate Profile Created</div>
-<div class="arrow">⬇</div>
+<div class="step">STEP 2 · Text Extraction (PDF / OCR)</div>
+<div class="arrow">↓</div>
 
-<div class="step">Job Posts Created</div>
-<div class="arrow">⬇</div>
+<div class="step">STEP 3 · AI CV Parsing</div>
+<div class="arrow">↓</div>
 
-<div class="step">AI Recommendation OR Manual Assignment</div>
-<div class="arrow">⬇</div>
+<div class="step">STEP 4 · Candidate Profile Created</div>
+<div class="arrow">↓</div>
 
-<div class="step">Admin Clicks Send / Proceed</div>
-<div class="arrow">⬇</div>
+<div class="step">STEP 5 · Job Posts Available</div>
+<div class="arrow">↓</div>
 
-<div class="step">Email + WhatsApp Sent</div>
-<div class="arrow">⬇</div>
+<div class="step decision">STEP 6 · AI Job Recommendation?</div>
 
-<div class="step">Candidate Replies</div>
-<div class="arrow">⬇</div>
+<div class="branch">
+  <div class="step">YES · Save Recommended Job</div>
+  <div class="step">NO · Manual Job Assignment</div>
+</div>
 
-<div class="step">Admin Approval</div>
-<div class="arrow">⬇</div>
+<div class="arrow">↓</div>
 
-<div class="step">📞 Interview Call (Phase 2)</div>
-<div class="arrow">⬇</div>
+<div class="step">STEP 7 · Job Assigned to Candidate</div>
+<div class="arrow">↓</div>
 
-<div class="step">Final Status (Selected / Rejected)</div>
+<div class="step">STEP 8 · Admin Clicks Send / Proceed</div>
+<div class="arrow">↓</div>
+
+<div class="step">STEP 9 · Email + WhatsApp Sent</div>
+<div class="arrow">↓</div>
+
+<div class="step decision">STEP 10 · Candidate Interested?</div>
+
+<div class="branch">
+  <div class="step">YES · Await Admin Approval</div>
+  <div class="step">NO · Close Candidate</div>
+</div>
+
+<div class="phase">Phase 2 – Interview Automation</div>
+
+<div class="step">STEP 11 · Admin Approval</div>
+<div class="arrow">↓</div>
+
+<div class="step">STEP 12 · Interview Scheduled</div>
+<div class="arrow">↓</div>
+
+<div class="step">STEP 13 · Email + WhatsApp Confirmation</div>
+<div class="arrow">↓</div>
+
+<div class="step">STEP 14 · Automated Voice Call</div>
+<div class="arrow">↓</div>
+
+<div class="step">STEP 15 · Interview Confirmed</div>
 
 </div>
 
-<!-- RIGHT EXPLANATION -->
+<!-- =====================
+     RIGHT PANEL (COMMUNICATION)
+===================== -->
 <div>
 
 <div class="card">
-<h2>📧 Email Automation</h2>
-<p>Email is sent only after admin approval.</p>
-<div class="highlight">
-<b>Mail From:</b> hr@devtriseczone.com<br>
-<b>Service:</b> SMTP (Zoho / Gmail / Outlook)
-</div>
-<p><b>Example Email:</b></p>
-<p><i>“Your profile is shortlisted for Backend Developer role.”</i></p>
+<div class="step-ref">PHASE 1 · STEP 5–6</div>
+<div class="section-title">Job Posts & Matching</div>
+<p>Admin creates job posts separately.</p>
+<ul>
+  <li>Title, skills, experience</li>
+  <li>AI calculates match percentage</li>
+</ul>
+<p><b>Example:</b> Backend Developer – 86% match</p>
 </div>
 
 <div class="card">
-<h2>💬 WhatsApp Automation</h2>
+<div class="step-ref">PHASE 1 · STEP 9</div>
+<div class="section-title">Email Automation</div>
+<p>Email is triggered only after job assignment.</p>
+<p><b>From:</b> hr@company.com</p>
+<p><b>Method:</b> SMTP (Zoho / Gmail / Outlook)</p>
+<p><b>Template:</b><br>
+“You are shortlisted for Backend Developer role.”</p>
+</div>
+
+<div class="card">
+<div class="step-ref">PHASE 1 · STEP 9–10</div>
+<div class="section-title">WhatsApp Messaging</div>
 <p>Uses official WhatsApp Business API.</p>
-<div class="highlight">
-<b>Template Message:</b><br>
-“Hello, this is HR from Devtri Seczone.  
-Are you interested in Backend Developer role?”
-</div>
-<p>Candidate reply is stored & shown on dashboard.</p>
+<p><b>Template:</b><br>
+“This job post is for Backend Developer. Are you interested?”</p>
+<p>Candidate replies are captured and logged.</p>
 </div>
 
 <div class="card">
-<h2>📞 Phase 2 – Interview Call</h2>
-<p>Only after candidate says YES and admin approves.</p>
-<div class="highlight">
-<b>Call API:</b> Twilio / Exotel<br>
-<b>Voice Script:</b><br>
-“Your interview is on 15 Jan at 11 AM.  
-Press 1 to confirm.”
-</div>
+<div class="step-ref">PHASE 2 · STEP 14</div>
+<div class="section-title">Automated Interview Call</div>
+<p>Triggered only after explicit consent and admin approval.</p>
+<p><b>Call API:</b> Twilio / Exotel</p>
+<p><b>Script:</b><br>
+“Your interview is scheduled for 15 Jan at 11 AM. Press 1 to confirm.”</p>
 </div>
 
 </div>
@@ -230,7 +319,7 @@ Press 1 to confirm.”
 </div>
 
 <footer>
-© 2026 Devtri Seczone Pvt Ltd · AI-Powered HR Automation Concept
+AI-Driven HR Automation System · Concept Architecture · Devtri Seczone Pvt Ltd
 </footer>
 
 </body>
