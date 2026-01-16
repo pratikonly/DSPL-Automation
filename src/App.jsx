@@ -97,8 +97,16 @@ const steps = [
     technical: [
       'Skill overlap vs. Required skill weights',
       'Experience range compatibility checking',
+      'Role relevance based on past titles',
       'Location & budget preference alignment',
       'Match percentage + logical explanation'
+    ],
+    intelligence: [
+      'Ranked Job Recommendations (1-3 roles)',
+      'Optional suggestions: No auto-assignment',
+      'Human-in-the-loop: Admin control mandatory',
+      'Explainable logic: Why a job is suggested',
+      'Traceable: All recommendations logged'
     ]
   },
   {
@@ -293,6 +301,19 @@ export default function App() {
                                <li className="flex items-center gap-2 justify-end">Job List Management <ListChecks className="w-3 h-3 text-indigo-500" /></li>
                                <li className="flex items-center gap-2 justify-end">Vercel Password Protection <Lock className="w-3 h-3 text-red-500" /></li>
                                <li className="flex items-center gap-2 justify-end">Custom Domain Verification <Globe className="w-3 h-3 text-cyan-500" /></li>
+                             </ul>
+                           </div>
+                         ) : step.id === '3' ? (
+                           <div className="space-y-4">
+                             <p className="text-zinc-500 text-sm font-medium leading-relaxed">
+                               AI Matching Engine for high-intent job alignment.
+                             </p>
+                             <ul className="space-y-2 text-[11px] text-zinc-600 font-bold uppercase tracking-wider">
+                               {step.intelligence.map((item, i) => (
+                                 <li key={i} className="flex items-center gap-2 justify-end">
+                                   {item} <Zap className="w-3 h-3 text-cyan-500" />
+                                 </li>
+                               ))}
                              </ul>
                            </div>
                          ) : step.id === '1' ? (
