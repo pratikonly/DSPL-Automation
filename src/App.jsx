@@ -45,10 +45,18 @@ const steps = [
       { label: 'Queue', value: 'Redis-backed Pipeline', icon: Server }
     ],
     technical: [
-      'Tesseract OCR fallback for scanned images',
-      'Duplicate detection via MD5 hashing',
-      'Text scrubbing & metadata cleaning',
-      'Elasticsearch indexing for searchability'
+      'File Validation (Type, Size, Corruption)',
+      'Hash-based Duplicate CV Detection',
+      'Layout-aware Native Text Extraction',
+      'Tesseract OCR with Noise Reduction',
+      'Standardized Data Normalization'
+    ],
+    intelligence: [
+      'Structured Semantic Parsing (GPT-4o)',
+      'No-Hallucination Extraction Protocol',
+      'Confidence-based Explainability Layer',
+      'Persistent Candidate Profile Creation',
+      'Immutable Audit Logging & Traceability'
     ]
   },
   {
@@ -285,6 +293,19 @@ export default function App() {
                                <li className="flex items-center gap-2 justify-end">Job List Management <ListChecks className="w-3 h-3 text-indigo-500" /></li>
                                <li className="flex items-center gap-2 justify-end">Vercel Password Protection <Lock className="w-3 h-3 text-red-500" /></li>
                                <li className="flex items-center gap-2 justify-end">Custom Domain Verification <Globe className="w-3 h-3 text-cyan-500" /></li>
+                             </ul>
+                           </div>
+                         ) : step.id === '1' ? (
+                           <div className="space-y-4">
+                             <p className="text-zinc-500 text-sm font-medium leading-relaxed">
+                               AI-Assisted Resume Understanding & Data Normalization Engine.
+                             </p>
+                             <ul className="space-y-2 text-[11px] text-zinc-600 font-bold uppercase tracking-wider">
+                               {step.intelligence.map((item, i) => (
+                                 <li key={i} className="flex items-center gap-2 justify-end">
+                                   {item} <Zap className="w-3 h-3 text-indigo-500" />
+                                 </li>
+                               ))}
                              </ul>
                            </div>
                          ) : (

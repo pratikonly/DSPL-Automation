@@ -1,0 +1,298 @@
+🧠 CV INTELLIGENT INTAKE
+Structured, Auditable, AI-Assisted Resume Understanding
+1️⃣ Feature Objective
+
+CV Intelligent Intake is responsible for converting unstructured resume files into structured, reliable candidate profiles that can be safely used in downstream automation.
+
+This feature does not make decisions.
+It prepares data so humans and automation can act confidently.
+
+2️⃣ Input Sources
+Supported CV Formats
+
+PDF (text-based)
+
+PDF (scanned images)
+
+DOC / DOCX
+
+Upload Modes
+
+Single CV upload
+
+Bulk CV upload (multiple files)
+
+Each file is processed independently to prevent cross-contamination of data.
+
+3️⃣ Intake Pipeline (High-Level Flow)
+CV Upload
+  ↓
+File Validation
+  ↓
+Text Extraction / OCR
+  ↓
+AI Semantic Parsing
+  ↓
+Data Normalization
+  ↓
+Candidate Profile Creation
+  ↓
+Audit Logging
+
+4️⃣ File Validation & Preprocessing
+Purpose
+
+Ensure that only valid and readable files enter the AI pipeline.
+
+Operations
+
+File type validation
+
+File size limits
+
+Corrupted file detection
+
+Duplicate CV detection (hash-based)
+
+Outcomes
+
+Invalid files rejected with reason
+
+Valid files queued for processing
+
+5️⃣ Text Extraction Layer
+5.1 Text-Based PDFs / DOCX
+
+Method:
+
+Native text extraction libraries
+
+Layout-aware parsing to preserve structure
+
+Extracted Content:
+
+Headings
+
+Bullet points
+
+Employment sections
+
+Education blocks
+
+5.2 Scanned PDFs (OCR Path)
+
+Triggered When:
+
+No selectable text detected
+
+Method:
+
+OCR engine (e.g., Tesseract)
+
+Language auto-detection
+
+Noise reduction and text cleanup
+
+Safeguards:
+
+Confidence threshold checks
+
+Low-quality scans flagged for review
+
+6️⃣ AI Semantic Parsing
+Purpose
+
+Convert raw resume text into structured, machine-readable data without hallucination.
+
+6.1 AI Input Design
+
+AI receives:
+
+Cleaned resume text
+
+Explicit extraction instructions
+
+Fixed output schema
+
+AI is instructed to:
+
+Extract only explicitly stated information
+
+Leave fields empty if not present
+
+Never infer age, experience, or skills
+
+6.2 Structured Output Schema (Example)
+{
+  "name": "Amit Verma",
+  "phone": "+91XXXXXXXXXX",
+  "email": "amit@example.com",
+  "education": [
+    {
+      "degree": "B.Tech",
+      "field": "Computer Science",
+      "institution": "ABC University"
+    }
+  ],
+  "experience": [
+    {
+      "role": "Backend Developer",
+      "company": "XYZ Pvt Ltd",
+      "duration": "2 years"
+    }
+  ],
+  "skills": ["Node.js", "PostgreSQL", "Docker"],
+  "location": "Bangalore",
+  "age": null
+}
+
+6.3 Explainability Layer
+
+AI additionally returns:
+
+Parsing confidence
+
+Ambiguous sections detected
+
+Notes for admin review
+
+This ensures human trust in AI output.
+
+7️⃣ Data Normalization & Cleaning
+Purpose
+
+Standardize extracted data for consistency across the platform.
+
+Examples
+
+Phone numbers normalized to international format
+
+Skill names standardized (e.g., “JS” → “JavaScript”)
+
+Experience durations converted into numeric ranges
+
+No new information is added — only formatting improvements.
+
+8️⃣ Candidate Profile Creation
+What Is Created
+
+A persistent candidate profile with:
+
+Parsed structured data
+
+Original CV file
+
+Text extraction snapshot
+
+AI output snapshot
+
+Profile Characteristics
+
+Human-readable UI
+
+Editable by admin
+
+AI data clearly marked
+
+9️⃣ Duplicate & Identity Handling
+Purpose
+
+Avoid multiple profiles for the same candidate.
+
+Detection Methods
+
+Email match
+
+Phone number match
+
+CV content similarity
+
+Admin Controls
+
+Merge profiles
+
+Ignore duplicates
+
+Keep versions
+
+🔟 Audit Logging & Traceability
+What Is Logged
+
+Upload timestamp
+
+Admin user ID
+
+AI model used
+
+Prompt version
+
+Parsed output
+
+Why This Matters
+
+Compliance
+
+Debugging
+
+AI accountability
+
+Trust in automation
+
+11️⃣ Error Handling & Fallbacks
+AI Failure
+
+CV marked as “Parsing Failed”
+
+Admin notified
+
+Manual review option
+
+OCR Failure
+
+Low confidence warning
+
+Admin can re-upload or skip
+
+Partial Extraction
+
+Missing fields highlighted
+
+Profile still created
+
+12️⃣ Security & Privacy Controls
+
+CV files stored securely
+
+Access restricted via roles
+
+No AI training on user data
+
+Logs are immutable
+
+13️⃣ Output of CV Intelligent Intake
+
+After completion, the system produces:
+
+A validated candidate profile
+
+Structured, explainable data
+
+Ready input for:
+
+Job matching
+
+Communication workflows
+
+Interview scheduling
+
+🔑 Key Principles Behind This Feature
+
+AI assists, does not decide
+
+No guessing, no hallucination
+
+Human review always possible
+
+Every action is traceable
+
+Scales safely with volume
