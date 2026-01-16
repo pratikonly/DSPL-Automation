@@ -1,325 +1,418 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>AI HR Automation – System Flow</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI HR Automation – Advanced System Architecture</title>
 
 <style>
-/* =====================
-   GLOBAL DARK THEME
-===================== */
-:root {
-  --bg:#0b0f1a;
-  --panel:#12182b;
-  --card:#161e3a;
-  --border:#2a3570;
-  --primary:#4f7cff;
+/* =========================
+   PURE BLACK ENTERPRISE UI
+========================= */
+:root{
+  --bg:#000000;
+  --panel:#050505;
+  --card:#0a0a0a;
+  --border:#1a1a1a;
+  --line:#2a2a2a;
+  --primary:#4f8cff;
+  --accent:#22d3ee;
   --text:#e5e7eb;
   --muted:#9ca3af;
-  --success:#22c55e;
   --danger:#ef4444;
+  --success:#22c55e;
 }
 
-/* Zoom out entire site by ~20% */
-html {
-  zoom: 0.8;
+/* Zoom out */
+html{ zoom:0.8; }
+
+*{
+  box-sizing:border-box;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
 }
 
-* {
-  box-sizing: border-box;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-body {
+body{
   margin:0;
   background:var(--bg);
   color:var(--text);
 }
 
-/* =====================
+/* =========================
    LAYOUT
-===================== */
-.container {
+========================= */
+.wrapper{
+  max-width:1700px;
+  margin:auto;
+  padding:40px 28px 80px;
+}
+
+.grid{
   display:grid;
-  grid-template-columns:1fr 2fr 1fr;
-  gap:24px;
-  padding:24px;
+  grid-template-columns:1fr 2.2fr 1fr;
+  gap:40px;
 }
 
-@media(max-width:1024px){
-  .container {
-    grid-template-columns:1fr;
-  }
+@media(max-width:1200px){
+  .grid{ grid-template-columns:1fr; }
 }
 
-/* =====================
-   PANELS & CARDS
-===================== */
-.card {
+/* =========================
+   INFO CARDS
+========================= */
+.card{
   background:var(--card);
   border:1px solid var(--border);
-  border-radius:14px;
-  padding:18px;
-  margin-bottom:18px;
+  border-radius:16px;
+  padding:22px;
+  margin-bottom:26px;
 }
 
-.section-title {
-  font-size:15px;
-  font-weight:700;
-  color:var(--primary);
-  margin-bottom:8px;
-}
-
-.step-ref {
+.phase{
   font-size:12px;
-  color:var(--muted);
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:var(--primary);
+  font-weight:700;
   margin-bottom:6px;
 }
 
-p, li {
+.step-ref{
+  font-size:11px;
+  color:var(--muted);
+  margin-bottom:10px;
+}
+
+h3{
+  margin:0 0 8px;
+  font-size:15px;
+}
+
+p,li{
   font-size:13px;
-  line-height:1.6;
-  color:var(--text);
+  line-height:1.65;
 }
 
-ul {
-  padding-left:18px;
+ul{ padding-left:18px; }
+
+/* =========================
+   FLOWCHART CORE
+========================= */
+.flow{
+  position:relative;
+  padding:20px 0;
 }
 
-/* =====================
-   FLOWCHART
-===================== */
-.flow {
-  display:flex;
-  flex-direction:column;
-  align-items:center;
+/* Central spine */
+.flow::before{
+  content:"";
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:50%;
+  width:2px;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      var(--line),
+      var(--line) 6px,
+      transparent 6px,
+      transparent 12px
+    );
+  transform:translateX(-50%);
 }
 
-.phase {
-  font-size:14px;
-  font-weight:700;
-  color:var(--primary);
-  margin:16px 0 8px;
-  text-transform:uppercase;
-  letter-spacing:1px;
-}
-
-.step {
-  background:var(--panel);
-  border:2px solid var(--border);
-  border-radius:30px;
-  padding:12px 22px;
-  margin:8px 0;
-  width:92%;
+.flow-title{
   text-align:center;
+  font-size:14px;
+  letter-spacing:1.5px;
+  color:var(--accent);
+  margin-bottom:40px;
+  text-transform:uppercase;
+}
+
+/* Step wrapper */
+.node{
+  position:relative;
+  display:flex;
+  margin:50px 0;
+}
+
+.node.left{ justify-content:flex-start; }
+.node.right{ justify-content:flex-end; }
+
+/* Dot on spine */
+.node::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:14px;
+  height:14px;
+  background:var(--bg);
+  border:3px solid var(--primary);
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+  z-index:2;
+}
+
+/* Connector arm */
+.node.left::after,
+.node.right::after{
+  content:"";
+  position:absolute;
+  top:50%;
+  width:140px;
+  height:2px;
+  background:var(--line);
+}
+
+.node.left::after{
+  left:50%;
+}
+.node.right::after{
+  right:50%;
+}
+
+/* Step box */
+.step{
+  width:42%;
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:32px;
+  padding:14px 26px;
   font-size:14px;
   font-weight:600;
 }
 
-.arrow {
-  font-size:22px;
-  color:var(--muted);
-}
-
 /* Decision */
-.decision {
+.decision .step{
   border-style:dashed;
+  text-align:center;
 }
 
-.branch {
+/* Branch row */
+.branch{
   display:flex;
-  gap:16px;
-  width:100%;
-  justify-content:center;
+  justify-content:space-between;
+  gap:40px;
+  margin:30px 0 60px;
 }
 
-.branch .step {
-  width:40%;
+.branch .step{
+  width:45%;
   font-size:13px;
 }
 
-/* =====================
+/* =========================
    FOOTER
-===================== */
-footer {
+========================= */
+footer{
   text-align:center;
-  padding:24px;
   font-size:12px;
   color:var(--muted);
+  margin-top:80px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="wrapper">
+<div class="grid">
 
-<!-- =====================
-     LEFT PANEL (INPUT & AI)
-===================== -->
+<!-- ================= LEFT EXPLANATION ================= -->
 <div>
 
 <div class="card">
-<div class="step-ref">PHASE 1 · STEP 1</div>
-<div class="section-title">CV Upload</div>
-<p>Admin uploads CV files (single or bulk).</p>
+<div class="phase">Phase 0</div>
+<div class="step-ref">System Initialization</div>
+<h3>Platform Setup</h3>
+<p>Initial one-time configuration performed by admin.</p>
 <ul>
-  <li>Formats: PDF, DOC, DOCX</li>
-  <li>Scanned CVs supported</li>
+  <li>SMTP email configuration</li>
+  <li>WhatsApp Business API templates</li>
+  <li>Call provider (Twilio / Exotel)</li>
+  <li>AI API keys (OpenAI)</li>
 </ul>
 </div>
 
 <div class="card">
-<div class="step-ref">PHASE 1 · STEP 2</div>
-<div class="section-title">Text Extraction</div>
-<p>The system determines whether the CV contains readable text.</p>
+<div class="phase">Phase 1</div>
+<div class="step-ref">Step 1–2</div>
+<h3>CV Intake & Normalization</h3>
+<p>Raw CV files are converted into machine-readable text.</p>
 <ul>
-  <li>If text-based → direct extraction</li>
-  <li>If scanned → OCR applied</li>
+  <li>PDF text extraction</li>
+  <li>OCR fallback for scanned files</li>
+  <li>Language normalization</li>
 </ul>
 </div>
 
 <div class="card">
-<div class="step-ref">PHASE 1 · STEP 3</div>
-<div class="section-title">AI CV Parsing</div>
-<p>Extracted text is sent to an AI model for understanding.</p>
+<div class="phase">Phase 1</div>
+<div class="step-ref">Step 3</div>
+<h3>AI Resume Understanding</h3>
+<p>AI understands intent and context, not formatting.</p>
 <ul>
-  <li>Name, phone, email</li>
-  <li>Education and experience</li>
-  <li>Skills and location</li>
-  <li>Age only if explicitly mentioned</li>
+  <li>Employment timelines</li>
+  <li>Skill relevance</li>
+  <li>Experience calculation</li>
 </ul>
-<p><b>AI Used:</b> OpenAI GPT-4 / GPT-4o</p>
+<p><b>AI:</b> GPT-4 / GPT-4o</p>
 </div>
 
 <div class="card">
-<div class="step-ref">PHASE 1 · STEP 4</div>
-<div class="section-title">Candidate Profile Creation</div>
-<p>A structured candidate profile is generated and stored.</p>
+<div class="phase">Phase 1</div>
+<div class="step-ref">Audit & Logs</div>
+<h3>Traceability</h3>
+<p>Every AI output and message is logged.</p>
 <ul>
-  <li>Status: Unassigned</li>
-  <li>Searchable and filterable</li>
+  <li>Parsed CV JSON snapshot</li>
+  <li>Email delivery logs</li>
+  <li>WhatsApp inbound messages</li>
 </ul>
 </div>
 
 </div>
 
-<!-- =====================
-     CENTER FLOWCHART
-===================== -->
+<!-- ================= CENTER FLOW ================= -->
 <div class="flow">
 
-<div class="phase">Phase 1 – Candidate Processing</div>
+<div class="flow-title">End-to-End Automation Flow</div>
 
-<div class="step">STEP 1 · CV Upload</div>
-<div class="arrow">↓</div>
+<div class="node left">
+  <div class="step">STEP 0 · Platform Configuration</div>
+</div>
 
-<div class="step">STEP 2 · Text Extraction (PDF / OCR)</div>
-<div class="arrow">↓</div>
+<div class="node right">
+  <div class="step">STEP 1 · CV Upload</div>
+</div>
 
-<div class="step">STEP 3 · AI CV Parsing</div>
-<div class="arrow">↓</div>
+<div class="node left">
+  <div class="step">STEP 2 · Text Extraction / OCR</div>
+</div>
 
-<div class="step">STEP 4 · Candidate Profile Created</div>
-<div class="arrow">↓</div>
+<div class="node right">
+  <div class="step">STEP 3 · AI CV Parsing</div>
+</div>
 
-<div class="step">STEP 5 · Job Posts Available</div>
-<div class="arrow">↓</div>
+<div class="node left">
+  <div class="step">STEP 4 · Candidate Profile Created</div>
+</div>
 
-<div class="step decision">STEP 6 · AI Job Recommendation?</div>
+<div class="node right">
+  <div class="step">STEP 5 · Job Posts Indexed</div>
+</div>
+
+<div class="node left decision">
+  <div class="step">STEP 6 · AI Recommendation Available?</div>
+</div>
 
 <div class="branch">
-  <div class="step">YES · Save Recommended Job</div>
+  <div class="step">YES · Save AI-Recommended Job</div>
   <div class="step">NO · Manual Job Assignment</div>
 </div>
 
-<div class="arrow">↓</div>
+<div class="node right">
+  <div class="step">STEP 7 · Job Assigned to Candidate</div>
+</div>
 
-<div class="step">STEP 7 · Job Assigned to Candidate</div>
-<div class="arrow">↓</div>
+<div class="node left">
+  <div class="step">STEP 8 · Admin Triggers Communication</div>
+</div>
 
-<div class="step">STEP 8 · Admin Clicks Send / Proceed</div>
-<div class="arrow">↓</div>
+<div class="node right">
+  <div class="step">STEP 9 · Email + WhatsApp Sent</div>
+</div>
 
-<div class="step">STEP 9 · Email + WhatsApp Sent</div>
-<div class="arrow">↓</div>
-
-<div class="step decision">STEP 10 · Candidate Interested?</div>
+<div class="node left decision">
+  <div class="step">STEP 10 · Candidate Interested?</div>
+</div>
 
 <div class="branch">
-  <div class="step">YES · Await Admin Approval</div>
-  <div class="step">NO · Close Candidate</div>
+  <div class="step">YES · Await Approval</div>
+  <div class="step">NO · Close & Archive</div>
 </div>
 
-<div class="phase">Phase 2 – Interview Automation</div>
+<div class="node right">
+  <div class="step">STEP 11 · Admin Approval</div>
+</div>
 
-<div class="step">STEP 11 · Admin Approval</div>
-<div class="arrow">↓</div>
+<div class="node left">
+  <div class="step">STEP 12 · Interview Scheduling</div>
+</div>
 
-<div class="step">STEP 12 · Interview Scheduled</div>
-<div class="arrow">↓</div>
+<div class="node right">
+  <div class="step">STEP 13 · Confirmation Messages</div>
+</div>
 
-<div class="step">STEP 13 · Email + WhatsApp Confirmation</div>
-<div class="arrow">↓</div>
+<div class="node left">
+  <div class="step">STEP 14 · Automated Voice Call</div>
+</div>
 
-<div class="step">STEP 14 · Automated Voice Call</div>
-<div class="arrow">↓</div>
-
-<div class="step">STEP 15 · Interview Confirmed</div>
+<div class="node right">
+  <div class="step">STEP 15 · Interview Confirmed</div>
+</div>
 
 </div>
 
-<!-- =====================
-     RIGHT PANEL (COMMUNICATION)
-===================== -->
+<!-- ================= RIGHT EXPLANATION ================= -->
 <div>
 
 <div class="card">
-<div class="step-ref">PHASE 1 · STEP 5–6</div>
-<div class="section-title">Job Posts & Matching</div>
-<p>Admin creates job posts separately.</p>
+<div class="phase">Phase 1</div>
+<div class="step-ref">Steps 5–7</div>
+<h3>Matching Logic</h3>
+<p>Job suitability is computed using weighted criteria.</p>
 <ul>
-  <li>Title, skills, experience</li>
-  <li>AI calculates match percentage</li>
+  <li>Skill overlap percentage</li>
+  <li>Experience tolerance range</li>
+  <li>Location compatibility</li>
 </ul>
-<p><b>Example:</b> Backend Developer – 86% match</p>
+<p><b>Output:</b> Match score + explanation</p>
 </div>
 
 <div class="card">
-<div class="step-ref">PHASE 1 · STEP 9</div>
-<div class="section-title">Email Automation</div>
-<p>Email is triggered only after job assignment.</p>
-<p><b>From:</b> hr@company.com</p>
-<p><b>Method:</b> SMTP (Zoho / Gmail / Outlook)</p>
-<p><b>Template:</b><br>
-“You are shortlisted for Backend Developer role.”</p>
-</div>
-
-<div class="card">
-<div class="step-ref">PHASE 1 · STEP 9–10</div>
-<div class="section-title">WhatsApp Messaging</div>
-<p>Uses official WhatsApp Business API.</p>
-<p><b>Template:</b><br>
+<div class="phase">Phase 1</div>
+<div class="step-ref">Steps 8–10</div>
+<h3>Communication Engine</h3>
+<p>Outbound communication is strictly admin-initiated.</p>
+<ul>
+  <li>Email via SMTP</li>
+  <li>WhatsApp via approved templates</li>
+</ul>
+<p><b>Example:</b><br>
 “This job post is for Backend Developer. Are you interested?”</p>
-<p>Candidate replies are captured and logged.</p>
 </div>
 
 <div class="card">
-<div class="step-ref">PHASE 2 · STEP 14</div>
-<div class="section-title">Automated Interview Call</div>
-<p>Triggered only after explicit consent and admin approval.</p>
-<p><b>Call API:</b> Twilio / Exotel</p>
+<div class="phase">Phase 2</div>
+<div class="step-ref">Steps 12–15</div>
+<h3>Interview Automation</h3>
+<p>Voice automation reduces manual HR workload.</p>
+<p><b>Call Provider:</b> Twilio / Exotel</p>
 <p><b>Script:</b><br>
 “Your interview is scheduled for 15 Jan at 11 AM. Press 1 to confirm.”</p>
 </div>
 
+<div class="card">
+<div class="phase">Error Handling</div>
+<div class="step-ref">Fallback Paths</div>
+<h3>Failures & Retries</h3>
+<ul>
+  <li>Email failed → retry / manual send</li>
+  <li>No WhatsApp reply → HR notified</li>
+  <li>Call unanswered → reschedule option</li>
+</ul>
 </div>
 
+</div>
+
+</div>
 </div>
 
 <footer>
-AI-Driven HR Automation System · Concept Architecture · Devtri Seczone Pvt Ltd
+Advanced AI-Driven HR Automation Architecture · Devtri Seczone Pvt Ltd
 </footer>
 
 </body>

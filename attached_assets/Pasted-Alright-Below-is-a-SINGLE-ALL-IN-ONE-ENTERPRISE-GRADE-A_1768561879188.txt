@@ -1,0 +1,457 @@
+Alright. Below is a **SINGLE, ALL-IN-ONE, ENTERPRISE-GRADE ADVANCED FLOW CHART**, written so clearly that:
+
+* You can **convert it to a visual diagram**
+* Or **hand it directly to lovable.dev**
+* Or **use it as product documentation**
+* NOTHING is skipped
+* BOTH Phase-1 and Phase-2 are fully covered
+* AI + Manual + Admin control + Messaging + Calls are ALL included
+
+Think of this as the **MASTER FLOW OF THE SYSTEM**.
+
+---
+
+# 🧠 MASTER SYSTEM FLOW CHART
+
+### *AI-Powered HR Automation Platform (Devtri Seczone)*
+
+---
+
+## 🔵 LEVEL 0 — SYSTEM OVERVIEW (ONE LOOK)
+
+```
+CV Upload
+   ↓
+AI Parsing
+   ↓
+Candidate Profile
+   ↓
+Job Posts
+   ↓
+AI Recommendation OR Manual Assignment
+   ↓
+Send Email + WhatsApp
+   ↓
+Candidate Replies
+   ↓
+Admin Approval
+   ↓
+Phase 2 (Interview Call)
+   ↓
+Final Status
+```
+
+---
+
+# 🔴 PHASE 0 — SETUP (ONE-TIME)
+
+## Admin Setup
+
+```
+Admin Login
+   ↓
+Create Job Posts
+   ↓
+Activate WhatsApp Templates
+   ↓
+Configure Email (SMTP)
+   ↓
+Configure Call API
+```
+
+✔ Done once
+✔ Used everywhere later
+
+---
+
+# 🟢 PHASE 1 — CV → INTEREST CONFIRMATION
+
+*(SAFE + LEGAL + POWERFUL)*
+
+---
+
+## 🟣 STEP 1 — CV UPLOAD (ADMIN)
+
+```
+Admin Dashboard
+   ↓
+Upload CV (Single / Bulk)
+```
+
+### Supported
+
+* PDF
+* DOC / DOCX
+* Scanned PDFs
+
+---
+
+## 🟣 STEP 2 — TEXT EXTRACTION
+
+```
+CV File
+   ↓
+Is Text-Based?
+   ↓           ↓
+ YES           NO
+  ↓             ↓
+Extract Text   OCR (Tesseract)
+```
+
+---
+
+## 🟣 STEP 3 — AI CV PARSING (CORE AI)
+
+```
+Extracted Text
+   ↓
+Send to AI (GPT)
+   ↓
+Structured JSON Returned
+```
+
+### AI Extracts:
+
+```
+Name
+Phone
+Email
+Education
+Experience
+Skills
+Location
+Age (if present)
+```
+
+❗ If something missing → `null`
+❗ No guessing
+
+---
+
+## 🟣 STEP 4 — CANDIDATE PROFILE CREATION
+
+```
+Parsed JSON
+   ↓
+Candidate Profile Created
+   ↓
+Saved in Database
+```
+
+### Candidate Profile Page:
+
+```
+/admin/candidates/amit-verma
+```
+
+Shows:
+
+* CV preview
+* Parsed data
+* Status = `Unassigned`
+
+---
+
+## 🟣 STEP 5 — ADMIN DASHBOARD (CANDIDATE LIST)
+
+```
+Admin Dashboard
+   ↓
+Candidate Table
+```
+
+Each row:
+
+```
+Name | Skills | Exp | Status | View Profile
+```
+
+---
+
+# 🟠 STEP 6 — JOB POSTS MANAGEMENT (SEPARATE PAGE)
+
+```
+Admin → Job Posts Page
+   ↓
+Create Job Post
+   ↓
+Save Job
+```
+
+Job Post Includes:
+
+```
+Title
+Required Skills
+Experience
+Location
+Description
+```
+
+---
+
+# 🔀 STEP 7 — JOB MATCHING (TWO POSSIBILITIES)
+
+---
+
+## 🟢 POSSIBILITY A — AI RECOMMENDATION
+
+```
+Admin opens Candidate Profile
+   ↓
+System compares CV ↔ Job Posts
+   ↓
+Match Scores Generated
+```
+
+### Example:
+
+```
+Backend Developer → 86%
+DevOps Engineer → 61%
+```
+
+---
+
+### Admin Decision (CRITICAL)
+
+```
+Admin Likes Recommendation?
+        ↓            ↓
+       YES           NO
+        ↓             ↓
+Save Assignment     Go to Manual Assignment
+```
+
+---
+
+## 🔵 POSSIBILITY B — MANUAL JOB ASSIGNMENT
+
+```
+Admin selects Candidate
+   ↓
+Admin selects Job Post manually
+   ↓
+Assign Job
+```
+
+✔ Full control
+✔ AI ignored if needed
+
+---
+
+## 🟡 STEP 8 — JOB ASSIGNED STATE
+
+```
+Candidate + Job Linked
+   ↓
+Status = Job Assigned
+```
+
+Source:
+
+* Recommended
+* Manual
+
+---
+
+# 🟠 STEP 9 — SEND / PROCEED (COMMUNICATION GATE)
+
+```
+Admin opens Communication Page
+   ↓
+Select Candidate(s)
+```
+
+Buttons:
+
+```
+Send (Single)
+Send (Bulk)
+Hold
+```
+
+---
+
+## 🟠 STEP 10 — EMAIL AUTOMATION
+
+```
+Send Trigger
+   ↓
+Email Sent
+   ↓
+Email Status Logged
+```
+
+### Email Example:
+
+> Subject: Shortlisted for Backend Developer
+> Hello Amit, your profile has been shortlisted.
+
+---
+
+## 🟠 STEP 11 — WHATSAPP AUTOMATION
+
+```
+Email Sent
+   ↓
+WhatsApp Template Sent
+```
+
+### WhatsApp Message:
+
+> This job post is for Backend Developer.
+> Are you interested? Reply YES or NO.
+
+---
+
+## 🟠 STEP 12 — CANDIDATE RESPONSE CAPTURE
+
+```
+Candidate Replies
+   ↓
+Webhook Receives Reply
+   ↓
+Message Stored
+```
+
+Replies:
+
+```
+YES
+NO
+Questions
+Maybe
+```
+
+---
+
+## 🟠 STEP 13 — RESPONSE DASHBOARD (ADMIN)
+
+```
+Admin Dashboard → Responses Page
+```
+
+Shows:
+
+```
+Candidate | Job | Email Status | WhatsApp Reply
+```
+
+---
+
+## 🟠 STEP 14 — ADMIN DECISION (PHASE GATE)
+
+```
+Candidate Interested?
+        ↓            ↓
+       YES           NO
+        ↓             ↓
+Approve           Close Candidate
+```
+
+✔ Only **YES + Approved** → Phase 2
+
+---
+
+# 🔴 PHASE 2 — INTERVIEW & CALL AUTOMATION
+
+*(ONLY FOR APPROVED CANDIDATES)*
+
+---
+
+## 🔴 STEP 15 — INTERVIEW SCHEDULING
+
+```
+Admin clicks "Schedule Interview"
+   ↓
+Interview Date & Time Set
+```
+
+---
+
+## 🔴 STEP 16 — INTERVIEW CONFIRMATION MESSAGE
+
+```
+Email Sent
+   ↓
+WhatsApp Sent
+```
+
+Message:
+
+> Your interview is on 15 Jan at 11 AM.
+
+---
+
+## 🔴 STEP 17 — AUTOMATED VOICE CALL
+
+```
+Call API Triggered
+   ↓
+Call Placed
+```
+
+### Call Script:
+
+> Hello Amit, your interview is scheduled on 15 Jan at 11 AM.
+> Press 1 to confirm, 2 to reschedule.
+
+---
+
+## 🔴 STEP 18 — CALL RESPONSE HANDLING
+
+```
+Press 1 → Confirm Interview
+Press 2 → Notify HR
+No Answer → Retry / Manual Follow-up
+```
+
+---
+
+## 🔴 STEP 19 — FINAL STATUS UPDATE
+
+```
+Interview Confirmed
+   ↓
+Status Updated
+```
+
+Statuses:
+
+```
+Interview Confirmed
+Interview Completed
+Selected
+Rejected
+```
+
+---
+
+# 🟢 END-TO-END MASTER FLOW (ONE LINE)
+
+```
+CV → AI → Profile → Job → Assign → Send → Reply → Approve → Call → Interview → Final
+```
+
+---
+
+# 🧠 WHY THIS FLOW IS ENTERPRISE-LEVEL
+
+✔ AI-assisted, not AI-forced
+✔ Admin controls every step
+✔ Legal safe-guards
+✔ Scales from 10 → 10,000 CVs
+✔ Perfect for Vercel + Supabase
+✔ Ideal for lovable.dev codegen
+
+---
+
+## 🔥 WHAT SHOULD WE DO NEXT (BEST ORDER)
+
+I strongly recommend:
+1️⃣ Convert this into **Lovable.dev MASTER PROMPT**
+2️⃣ Design **Database Schema**
+3️⃣ Design **Admin UI pages**
+
+👉 Tell me **which one**, and we move from *idea* → *real product*.
