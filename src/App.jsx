@@ -185,6 +185,13 @@ const steps = [
       'Capture Press 1 (Confirm) / 2 (Reschedule)',
       'Automatic sync with Company ERP/ATS',
       'Interview completion status triggers'
+    ],
+    intelligence: [
+      'Triggered ONLY after HR approval',
+      'Voice call APIs (Twilio/Exotel)',
+      'Predefined call script execution',
+      'Real-time keypad input capture',
+      'Fully auditable & traceable calls'
     ]
   }
 ];
@@ -440,6 +447,19 @@ export default function App() {
                                 {step.intelligence.map((item, i) => (
                                   <li key={i} className="flex items-center gap-2">
                                     <Zap className="w-3 h-3 text-orange-500" /> {item}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                         ) : step.id === '6' ? (
+                            <div className="space-y-4 text-left">
+                              <p className="text-zinc-500 text-sm font-medium leading-relaxed text-balance">
+                                Automated Voice AI confirmation & verification.
+                              </p>
+                              <ul className="space-y-2 text-[11px] text-zinc-600 font-bold uppercase tracking-wider">
+                                {step.intelligence.map((item, i) => (
+                                  <li key={i} className="flex items-center gap-2">
+                                    <Zap className="w-3 h-3 text-red-500" /> {item}
                                   </li>
                                 ))}
                               </ul>
