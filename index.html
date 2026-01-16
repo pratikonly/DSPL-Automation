@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AI HR Automation Flow – Devtri Seczone</title>
+
+<style>
+:root {
+  --primary:#0f172a;
+  --secondary:#2563eb;
+  --bg:#f8fafc;
+  --card:#ffffff;
+  --text:#0f172a;
+}
+
+* {
+  box-sizing:border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* Layout */
+.container {
+  display:grid;
+  grid-template-columns:1fr 2fr 1fr;
+  gap:20px;
+  padding:20px;
+}
+
+/* Responsive */
+@media(max-width:1024px){
+  .container {
+    grid-template-columns:1fr;
+  }
+}
+
+/* Cards */
+.card {
+  background:var(--card);
+  border-radius:12px;
+  padding:16px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.05);
+  margin-bottom:16px;
+}
+
+h2 {
+  margin-top:0;
+  font-size:18px;
+  color:var(--secondary);
+}
+
+h3 {
+  margin:10px 0 5px;
+  font-size:15px;
+}
+
+p, li {
+  font-size:14px;
+  line-height:1.5;
+}
+
+/* Flowchart */
+.flow {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.step {
+  background:var(--card);
+  border:2px solid var(--secondary);
+  padding:12px 18px;
+  border-radius:30px;
+  margin:8px 0;
+  font-weight:600;
+  text-align:center;
+  width:90%;
+}
+
+.arrow {
+  font-size:22px;
+  color:var(--secondary);
+}
+
+/* Highlight */
+.highlight {
+  background:#e0e7ff;
+  padding:10px;
+  border-radius:8px;
+  margin-top:10px;
+}
+
+/* Footer */
+footer {
+  text-align:center;
+  padding:20px;
+  font-size:13px;
+  color:#475569;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- LEFT EXPLANATION -->
+<div>
+
+<div class="card">
+<h2>📄 CV Upload & AI Parsing</h2>
+<p><b>Admin uploads CVs</b> (PDF/DOC/Scanned).</p>
+<ul>
+<li>Text extracted from CV</li>
+<li>OCR if scanned</li>
+<li>Sent to AI for understanding</li>
+</ul>
+<div class="highlight">
+<b>AI Used:</b> OpenAI GPT-4 / GPT-4o<br>
+<b>Purpose:</b> Convert messy CV into clean JSON
+</div>
+</div>
+
+<div class="card">
+<h2>🧠 AI Job Recommendation</h2>
+<p>AI compares candidate CV with job posts.</p>
+<ul>
+<li>Skills match</li>
+<li>Experience match</li>
+<li>Location match</li>
+</ul>
+<div class="highlight">
+<b>Example:</b><br>
+Backend Developer → 86% match
+</div>
+</div>
+
+<div class="card">
+<h2>✋ Manual Control</h2>
+<p>Admin can ignore AI and assign job manually.</p>
+<ul>
+<li>Full human control</li>
+<li>No forced automation</li>
+</ul>
+</div>
+
+</div>
+
+<!-- CENTER FLOWCHART -->
+<div class="flow">
+
+<div class="step">CV Upload</div>
+<div class="arrow">⬇</div>
+
+<div class="step">AI CV Parsing</div>
+<div class="arrow">⬇</div>
+
+<div class="step">Candidate Profile Created</div>
+<div class="arrow">⬇</div>
+
+<div class="step">Job Posts Created</div>
+<div class="arrow">⬇</div>
+
+<div class="step">AI Recommendation OR Manual Assignment</div>
+<div class="arrow">⬇</div>
+
+<div class="step">Admin Clicks Send / Proceed</div>
+<div class="arrow">⬇</div>
+
+<div class="step">Email + WhatsApp Sent</div>
+<div class="arrow">⬇</div>
+
+<div class="step">Candidate Replies</div>
+<div class="arrow">⬇</div>
+
+<div class="step">Admin Approval</div>
+<div class="arrow">⬇</div>
+
+<div class="step">📞 Interview Call (Phase 2)</div>
+<div class="arrow">⬇</div>
+
+<div class="step">Final Status (Selected / Rejected)</div>
+
+</div>
+
+<!-- RIGHT EXPLANATION -->
+<div>
+
+<div class="card">
+<h2>📧 Email Automation</h2>
+<p>Email is sent only after admin approval.</p>
+<div class="highlight">
+<b>Mail From:</b> hr@devtriseczone.com<br>
+<b>Service:</b> SMTP (Zoho / Gmail / Outlook)
+</div>
+<p><b>Example Email:</b></p>
+<p><i>“Your profile is shortlisted for Backend Developer role.”</i></p>
+</div>
+
+<div class="card">
+<h2>💬 WhatsApp Automation</h2>
+<p>Uses official WhatsApp Business API.</p>
+<div class="highlight">
+<b>Template Message:</b><br>
+“Hello, this is HR from Devtri Seczone.  
+Are you interested in Backend Developer role?”
+</div>
+<p>Candidate reply is stored & shown on dashboard.</p>
+</div>
+
+<div class="card">
+<h2>📞 Phase 2 – Interview Call</h2>
+<p>Only after candidate says YES and admin approves.</p>
+<div class="highlight">
+<b>Call API:</b> Twilio / Exotel<br>
+<b>Voice Script:</b><br>
+“Your interview is on 15 Jan at 11 AM.  
+Press 1 to confirm.”
+</div>
+</div>
+
+</div>
+
+</div>
+
+<footer>
+© 2026 Devtri Seczone Pvt Ltd · AI-Powered HR Automation Concept
+</footer>
+
+</body>
+</html>
