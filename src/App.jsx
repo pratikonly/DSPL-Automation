@@ -5,7 +5,7 @@ import {
   Briefcase, GitMerge, Mail, MessageSquare, CheckCircle, 
   PhoneCall, Calendar, ArrowRight, ShieldCheck, Settings, 
   Zap, ChevronRight, Lock, Globe, Database, Terminal, Shield,
-  Server, HardDrive, Share2, Search, BarChart3, ListChecks
+  Server, HardDrive, Share2, Search, BarChart3, ListChecks, Bell
 } from 'lucide-react';
 
 const steps = [
