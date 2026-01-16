@@ -1,0 +1,276 @@
+🔧 SETUP — SYSTEM INITIALIZATION
+One-Time Platform Infrastructure Readiness
+
+This phase is executed only once before the system becomes operational.
+Its purpose is to ensure that all technical services, permissions, and templates are correctly configured so that later automation runs safely, reliably, and under full admin control.
+
+1️⃣ Communication Infrastructure Configuration
+1.1 SMTP Email System Setup
+
+Purpose:
+Enable automated, trackable, and authenticated email communication from the company’s official email address.
+
+Details:
+
+Configure SMTP credentials for a company-owned email account (example: hr@company.com)
+
+Supported providers:
+
+Google Workspace
+
+Microsoft Outlook
+
+Zoho Mail
+
+Any custom SMTP server
+
+Secure storage of credentials using environment variables (never hardcoded)
+
+Capabilities Enabled:
+
+Automated job notifications
+
+Interview confirmation emails
+
+Follow-up communication
+
+Email delivery status tracking (sent / failed / bounced)
+
+Operational Safeguards:
+
+Rate limiting to prevent spam classification
+
+Retry logic for temporary failures
+
+Manual override option for admin
+
+1.2 WhatsApp Business API Integration
+
+Purpose:
+Enable compliant, template-based WhatsApp messaging for candidate communication.
+
+Details:
+
+Integration via:
+
+WhatsApp Business Cloud API
+
+or verified providers (e.g., Twilio, Meta partners)
+
+Phone number verification and business approval completed once
+
+Webhook endpoint configured to receive incoming candidate replies
+
+Template Configuration:
+
+Pre-approved message templates such as:
+
+Job interest confirmation
+
+Interview schedule notification
+
+Follow-up reminders
+
+Templates are non-editable at runtime to comply with WhatsApp policies
+
+Capabilities Enabled:
+
+One-click bulk messaging
+
+Candidate reply capture (YES / NO / custom text)
+
+Real-time response status in admin dashboard
+
+Compliance Note:
+
+Messages are sent only after admin action
+
+No unsolicited automation
+
+2️⃣ AI Configuration & Prompt Engineering
+2.1 AI Provider Configuration
+
+Purpose:
+Enable structured and consistent AI behavior across CV parsing and job matching.
+
+Details:
+
+AI provider API key configuration (e.g., OpenAI)
+
+Model selection based on task:
+
+Resume understanding
+
+Skill extraction
+
+Job matching explanation
+
+Token and cost limits defined to prevent overuse
+
+2.2 CV Parsing Prompt Engineering
+
+Purpose:
+Ensure AI extracts accurate, structured, and explainable data from resumes.
+
+Prompt Design Principles:
+
+AI instructed to:
+
+Extract only what is explicitly present
+
+Never assume or fabricate missing data
+
+Return structured JSON only
+
+Fields defined clearly:
+
+Name
+
+Phone number
+
+Email
+
+Education
+
+Experience (role, duration)
+
+Skills
+
+Location
+
+Age (only if explicitly mentioned)
+
+Why This Matters:
+
+Prevents hallucination
+
+Makes AI output auditable
+
+Allows admin trust in automation
+
+2.3 Job Matching Logic Configuration
+
+Purpose:
+Prepare AI to recommend jobs without making final decisions.
+
+Details:
+
+Matching criteria weights defined:
+
+Skill relevance
+
+Experience range compatibility
+
+Location preference
+
+AI generates:
+
+Match percentage
+
+Human-readable explanation
+
+Recommendations are advisory only
+
+Admin approval is mandatory
+
+3️⃣ Role-Based Access Control (RBAC)
+
+Purpose:
+Ensure secure and controlled access to sensitive candidate and communication data.
+
+Defined Roles:
+3.1 Super Admin
+
+Full system access
+
+Configuration changes
+
+API keys and integrations
+
+User management
+
+3.2 HR Admin
+
+CV upload
+
+Job assignment
+
+Communication triggers
+
+Interview scheduling
+
+3.3 Viewer / Recruiter
+
+Read-only access
+
+Candidate profile viewing
+
+No communication privileges
+
+Security Measures:
+
+Permission checks at API level
+
+UI elements hidden based on role
+
+Action logging per user
+
+4️⃣ Job Post Template Indexing
+
+Purpose:
+Prepare structured job data so AI and admin workflows operate consistently.
+
+Details:
+
+Job posts created in advance with:
+
+Title
+
+Required skills
+
+Experience range
+
+Location
+
+Job description
+
+Each job post stored as structured data
+
+Indexed for:
+
+AI matching
+
+Manual selection
+
+Reporting
+
+Benefits:
+
+Faster assignment
+
+Consistent communication
+
+Better AI recommendations
+
+5️⃣ System Validation & Readiness Check
+
+Purpose:
+Confirm that all components are operational before live usage.
+
+Validation Checklist:
+
+Test email sent successfully
+
+Test WhatsApp template delivered
+
+AI test CV parsed correctly
+
+Job matching returns expected output
+
+Role permissions enforced correctly
+
+Result:
+
+System marked as Ready
+
+CV intake and automation unlocked

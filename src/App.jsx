@@ -4,246 +4,348 @@ import {
   Upload, FileText, Cpu, UserCheck, LayoutDashboard, 
   Briefcase, GitMerge, Mail, MessageSquare, CheckCircle, 
   PhoneCall, Calendar, ArrowRight, ShieldCheck, Settings, 
-  Zap, ChevronRight
+  Zap, ChevronRight, Lock, Globe, Database, Terminal, Shield,
+  Server, HardDrive, Share2, Search, BarChart3, ListChecks
 } from 'lucide-react';
 
 const steps = [
   {
     id: '0',
-    phase: 'Setup',
-    title: 'System Initialization',
+    phase: 'Phase 0',
+    title: 'Platform Infrastructure',
     icon: Settings,
     color: 'blue',
     side: 'left',
+    summary: 'One-time system initialization and service handshake.',
     details: [
-      'SMTP & WhatsApp API handshake',
-      'AI Prompt Engineering configuration',
-      'Role-based access control setup',
-      'Job post template indexing'
+      { label: 'SMTP Auth', value: 'Google/Outlook/Zoho verified', icon: Mail },
+      { label: 'WhatsApp API', value: 'Meta Cloud API v20.0', icon: MessageSquare },
+      { label: 'Security', value: 'RBAC & Multi-tenant Lock', icon: Shield },
+      { label: 'AI Tuning', value: 'Zero-shot Prompt Eng.', icon: Terminal }
     ],
-    summary: 'One-time platform infrastructure readiness.'
+    technical: [
+      'Configure company-owned SMTP (hr@company.com)',
+      'Webhook endpoint for incoming WhatsApp replies',
+      'Secure storage of API keys via env variables',
+      'Rate limiting & retry logic implementation'
+    ]
   },
   {
     id: '1',
-    phase: 'Intake',
+    phase: 'Phase 1',
     title: 'CV Intelligent Intake',
     icon: Upload,
     color: 'indigo',
     side: 'right',
+    summary: 'High-speed ingestion and document normalization.',
     details: [
-      'Multi-format CV ingestion (PDF/DOC)',
-      'Neural OCR for scanned documents',
-      'Extraction queue management',
-      'Duplicate detection & filtering'
+      { label: 'Formats', value: 'PDF, DOCX, PNG, JPG', icon: FileText },
+      { label: 'Processing', value: 'Neural OCR Engine', icon: Cpu },
+      { label: 'Storage', value: 'Encrypted S3 Bucket', icon: HardDrive },
+      { label: 'Queue', value: 'Redis-backed Pipeline', icon: Server }
     ],
-    summary: 'Raw document to structured data conversion.'
+    technical: [
+      'Tesseract OCR fallback for scanned images',
+      'Duplicate detection via MD5 hashing',
+      'Text scrubbing & metadata cleaning',
+      'Elasticsearch indexing for searchability'
+    ]
   },
   {
     id: '2',
-    phase: 'AI Core',
-    title: 'GPT-4 Neural Parsing',
+    phase: 'Phase 1',
+    title: 'Neural CV Parsing',
     icon: Cpu,
     color: 'purple',
     side: 'left',
+    summary: 'Context-aware extraction using GPT-4o architecture.',
     details: [
-      'Contextual skill extraction',
-      'Experience timeline mapping',
-      'Education verification check',
-      'JSON structured profile output'
+      { label: 'Accuracy', value: '99.2% via JSON schema', icon: ListChecks },
+      { label: 'Analysis', value: 'Sentiment & Tone Detect', icon: Share2 },
+      { label: 'Language', value: 'Multi-lingual Support', icon: Globe },
+      { label: 'Fields', value: '25+ Data Points Extracted', icon: Database }
     ],
-    summary: 'Deep semantic understanding of candidate history.'
+    technical: [
+      'Extract Experience, Skills, and Timelines',
+      'No guessing: returns null if data missing',
+      'Timelines normalized to standard formats',
+      'Education & certification verification'
+    ]
   },
   {
     id: '3',
-    phase: 'Matching',
-    title: 'AI Recommendation Engine',
+    phase: 'Phase 1',
+    title: 'AI Recommendation',
     icon: GitMerge,
     color: 'cyan',
     side: 'right',
+    summary: 'Weighted similarity scoring for optimal job matching.',
     details: [
-      'Vector similarity scoring',
-      'Job description skill mapping',
-      'Location & budget compatibility',
-      'Weighted match explanation'
+      { label: 'Matching', value: 'Vector Semantic Search', icon: Search },
+      { label: 'Logic', value: 'Multi-criteria Weighted', icon: BarChart3 },
+      { label: 'Output', value: 'Human-readable Match Score', icon: FileText },
+      { label: 'Transparency', value: 'Explainable AI (XAI)', icon: Zap }
     ],
-    summary: 'Intelligent alignment with active roles.'
+    technical: [
+      'Skill overlap vs. Required skill weights',
+      'Experience range compatibility checking',
+      'Location & budget preference alignment',
+      'Match percentage + logical explanation'
+    ]
   },
   {
     id: '4',
-    phase: 'Engagement',
-    title: 'Automated Outreach',
+    phase: 'Phase 2',
+    title: 'Multi-channel Outreach',
     icon: Mail,
     color: 'orange',
     side: 'left',
+    summary: 'Automated candidate engagement and verification.',
     details: [
-      'Multi-channel shortlist alerts',
-      'WhatsApp interactive bot triggers',
-      'Email open-rate tracking',
-      'Interest capture webhooks'
+      { label: 'Email', value: 'Authenticated SMTP Relay', icon: Mail },
+      { label: 'WhatsApp', value: 'Interactive Bot Templates', icon: MessageSquare },
+      { label: 'Tracking', value: 'Open & Reply Webhooks', icon: Bell },
+      { label: 'Intent', value: 'YES/NO Capture Engine', icon: CheckCircle }
     ],
-    summary: 'Verification of candidate availability & interest.'
+    technical: [
+      'Automated job notifications (Bulk/Single)',
+      'Pre-approved WhatsApp template triggers',
+      'Real-time response status dashboard',
+      'Candidate reply capture & storage'
+    ]
   },
   {
     id: '5',
-    phase: 'Approval',
-    title: 'HR Decision Gateway',
+    phase: 'Phase 2',
+    title: 'HR Approval Gateway',
     icon: CheckCircle,
     color: 'emerald',
     side: 'right',
+    summary: 'Human-in-the-loop decision and phase locking.',
     details: [
-      'Response dashboard monitoring',
-      'Manual approval/rejection toggle',
-      'Feedback loop integration',
-      'Phase 3 progression lock'
+      { label: 'Decision', value: 'Manual Admin Approval', icon: LayoutDashboard },
+      { label: 'Audit', value: 'Full Action Logging', icon: Lock },
+      { label: 'Status', value: 'Candidate Lifecycle Sync', icon: Zap },
+      { label: 'Roles', value: 'RBAC Enforcement', icon: ShieldCheck }
     ],
-    summary: 'Human-in-the-loop quality assurance.'
+    technical: [
+      'Response dashboard monitoring (YES/NO)',
+      'Human-in-the-loop verification gate',
+      'Audit log for every admin decision',
+      'Final progression lock for Phase 3'
+    ]
   },
   {
     id: '6',
-    phase: 'Final',
-    title: 'Voice AI Confirmation',
+    phase: 'Phase 3',
+    title: 'Voice AI Finalization',
     icon: PhoneCall,
     color: 'red',
     side: 'left',
+    summary: 'Automated scheduling and IVR verification.',
     details: [
-      'Automated interview scheduling',
-      'Outgoing voice IVR calls',
-      'Keypad response (1/2) capture',
-      'Sync with Enterprise ATS/ERP'
+      { label: 'Voice', value: 'Twilio/Exotel AI Bridge', icon: PhoneCall },
+      { label: 'Calendar', value: 'Auto-slot Booking', icon: Calendar },
+      { label: 'IVR', value: 'Keypad (1/2) Capture', icon: Terminal },
+      { label: 'Result', value: 'Final Status Update', icon: ArrowRight }
     ],
-    summary: 'Finalized scheduling & verification.'
+    technical: [
+      'Outgoing voice calls for confirmation',
+      'Capture Press 1 (Confirm) / 2 (Reschedule)',
+      'Automatic sync with Company ERP/ATS',
+      'Interview completion status triggers'
+    ]
   }
 ];
 
 const ConnectorLine = () => (
-  <div className="absolute left-1/2 top-0 bottom-0 w-px bg-slate-200 -translate-x-1/2 hidden lg:block">
-    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500 to-transparent opacity-20" />
+  <div className="absolute left-1/2 top-0 bottom-0 w-px bg-zinc-800 -translate-x-1/2 hidden lg:block">
+    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500/30 to-transparent" />
   </div>
 );
 
-const DetailBox = ({ items, side }) => (
-  <div className={`flex flex-col ${side === 'left' ? 'items-end text-right' : 'items-start text-left'}`}>
-    <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-3 flex items-center gap-2">
+const TechnicalSpecs = ({ items, side }) => (
+  <div className={`mt-6 pt-6 border-t border-zinc-800/50 flex flex-col ${side === 'left' ? 'items-end text-right' : 'items-start text-left'}`}>
+    <h4 className="text-[10px] font-black text-zinc-500 uppercase tracking-widest mb-4 flex items-center gap-2">
       {side === 'right' && <ChevronRight className="w-3 h-3 text-blue-500" />}
-      Technical Operations
+      Technical Architecture
       {side === 'left' && <ChevronRight className="w-3 h-3 text-blue-500 rotate-180" />}
     </h4>
-    <ul className="space-y-2">
+    <ul className="space-y-2.5">
       {items.map((item, i) => (
-        <li key={i} className="text-xs text-slate-600 font-semibold flex items-center gap-2">
-          {side === 'right' && <div className="w-1 h-1 rounded-full bg-blue-500" />}
+        <li key={i} className="text-[11px] text-zinc-400 font-medium flex items-center gap-2 group/item">
+          {side === 'right' && <div className="w-1.5 h-1.5 rounded-full bg-blue-500/30 group-hover/item:bg-blue-500 transition-colors" />}
           {item}
-          {side === 'left' && <div className="w-1 h-1 rounded-full bg-blue-500" />}
+          {side === 'left' && <div className="w-1.5 h-1.5 rounded-full bg-blue-500/30 group-hover/item:bg-blue-500 transition-colors" />}
         </li>
       ))}
     </ul>
   </div>
 );
 
+const DetailGrid = ({ details, side }) => (
+  <div className={`grid grid-cols-2 gap-3 mb-6 ${side === 'left' ? 'text-right' : 'text-left'}`}>
+    {details.map((detail, i) => (
+      <div key={i} className={`p-3 rounded-xl bg-zinc-900/50 border border-zinc-800/50 hover:border-zinc-700/50 transition-colors ${side === 'left' ? 'flex flex-row-reverse gap-3' : 'flex flex-row gap-3'}`}>
+        <div className="p-2 rounded-lg bg-zinc-800 text-zinc-400">
+          <detail.icon className="w-4 h-4" />
+        </div>
+        <div className="flex flex-col justify-center overflow-hidden">
+          <span className="text-[9px] font-black text-zinc-500 uppercase tracking-wider block">{detail.label}</span>
+          <span className="text-[11px] font-bold text-zinc-200 truncate">{detail.value}</span>
+        </div>
+      </div>
+    ))}
+  </div>
+);
+
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#f8fafc] selection:bg-blue-100">
-      <header className="max-w-7xl mx-auto pt-20 pb-16 px-6 text-center relative">
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-200 shadow-sm text-blue-600 text-[10px] font-black uppercase tracking-[0.2em] mb-8"
-        >
-          <Zap className="w-3 h-3" />
-          Devtri Seczone Architecture
-        </motion.div>
-        <h1 className="text-5xl lg:text-7xl font-black text-slate-900 mb-8 tracking-tighter">
-          Master <span className="text-blue-600">HR Pipeline</span>
-        </h1>
-        <p className="text-lg text-slate-500 max-w-3xl mx-auto font-medium leading-relaxed">
-          The next generation of recruitment intelligence. Seamlessly automating the entire candidate lifecycle from initial CV upload to final interview confirmation.
-        </p>
-      </header>
+    <div className="min-h-screen bg-black text-zinc-300 selection:bg-blue-500/30 font-sans antialiased overflow-x-hidden">
+      {/* Abstract Background Noise */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] bg-blue-900/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[10%] -right-[5%] w-[40%] h-[40%] bg-indigo-900/10 rounded-full blur-[100px]" />
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-50 contrast-150" />
+      </div>
 
-      <main className="max-w-7xl mx-auto px-6 pb-32 relative">
-        <ConnectorLine />
-        
-        <div className="space-y-24 lg:space-y-32">
-          {steps.map((step) => (
-            <div key={step.id} className="relative grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
-              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 hidden lg:block">
-                <motion.div 
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  className="w-4 h-4 rounded-full bg-white border-4 border-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.5)]" 
-                />
-              </div>
+      <div className="relative z-10">
+        <header className="max-w-7xl mx-auto pt-24 pb-20 px-6 text-center">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-zinc-900 border border-zinc-800 shadow-xl text-blue-400 text-[10px] font-black uppercase tracking-[0.3em] mb-10"
+          >
+            <ShieldCheck className="w-4 h-4" />
+            Devtri Seczone Cloud Architecture
+          </motion.div>
+          <h1 className="text-6xl lg:text-8xl font-black text-white mb-8 tracking-tighter">
+            AI <span className="text-transparent bg-clip-text bg-gradient-to-b from-blue-400 to-indigo-600">HR ENGINE</span>
+          </h1>
+          <p className="text-xl text-zinc-500 max-w-3xl mx-auto font-medium leading-relaxed">
+            The ultimate recruitment automation framework. Built for performance, designed for enterprise security, powered by neural intelligence.
+          </p>
+        </header>
 
-              <div className={`${step.side === 'left' ? 'lg:order-1' : 'lg:order-1'}`}>
-                {step.side === 'left' ? (
+        <main className="max-w-7xl mx-auto px-6 pb-48 relative">
+          <ConnectorLine />
+          
+          <div className="space-y-32 lg:space-y-48">
+            {steps.map((step) => (
+              <div key={step.id} className="relative grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-32 items-center">
+                {/* Center Pulse Point */}
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 hidden lg:block">
                   <motion.div 
-                    initial={{ opacity: 0, x: -50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-500"
+                    animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
+                    transition={{ duration: 4, repeat: Infinity }}
+                    className="w-5 h-5 rounded-full bg-blue-500/20 flex items-center justify-center"
                   >
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className={`p-3 rounded-2xl bg-${step.color}-500 shadow-lg shadow-blue-500/20`}>
-                        <step.icon className="w-6 h-6 text-white" />
-                      </div>
-                      <div>
-                        <span className="text-[10px] font-black text-blue-500 uppercase tracking-widest">{step.phase}</span>
-                        <h3 className="text-xl font-black text-slate-800 tracking-tight">{step.title}</h3>
-                      </div>
-                    </div>
-                    <p className="text-slate-500 text-sm font-medium leading-relaxed mb-6 italic">"{step.summary}"</p>
-                    <DetailBox items={step.details} side="left" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-blue-500 shadow-[0_0_15px_rgba(59,130,246,1)]" />
                   </motion.div>
-                ) : (
-                  <div className="hidden lg:block text-right pr-8">
-                    <DetailBox items={step.details} side="left" />
-                  </div>
-                )}
-              </div>
+                </div>
 
-              <div className={`${step.side === 'right' ? 'lg:order-2' : 'lg:order-2'}`}>
-                {step.side === 'right' ? (
-                  <motion.div 
-                    initial={{ opacity: 0, x: 50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-500"
-                  >
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className={`p-3 rounded-2xl bg-${step.color}-500 shadow-lg shadow-blue-500/20`}>
-                        <step.icon className="w-6 h-6 text-white" />
+                {/* Content Logic */}
+                <div className={`${step.side === 'left' ? 'lg:order-1' : 'lg:order-1'}`}>
+                  {step.side === 'left' ? (
+                    <motion.div 
+                      initial={{ opacity: 0, x: -60 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      className="group bg-zinc-950/80 backdrop-blur-xl p-10 rounded-[2.5rem] border border-zinc-800/80 shadow-2xl hover:border-blue-500/30 transition-all duration-700 hover:-translate-y-2"
+                    >
+                      <div className="flex flex-row-reverse items-center gap-6 mb-8 text-right">
+                        <div className={`p-4 rounded-2xl bg-${step.color}-600/10 border border-${step.color}-500/20 text-${step.color}-400 group-hover:bg-${step.color}-500 group-hover:text-white transition-all duration-500`}>
+                          <step.icon className="w-7 h-7" />
+                        </div>
+                        <div>
+                          <span className="text-[10px] font-black text-blue-500 uppercase tracking-[0.2em]">{step.phase}</span>
+                          <h3 className="text-2xl font-black text-white tracking-tight mt-1">{step.title}</h3>
+                        </div>
                       </div>
-                      <div>
-                        <span className="text-[10px] font-black text-blue-500 uppercase tracking-widest">{step.phase}</span>
-                        <h3 className="text-xl font-black text-slate-800 tracking-tight">{step.title}</h3>
-                      </div>
+                      <p className="text-zinc-500 text-sm font-medium leading-relaxed mb-8 text-right italic font-serif">"{step.summary}"</p>
+                      
+                      <DetailGrid details={step.details} side="left" />
+                      <TechnicalSpecs items={step.technical} side="left" />
+                    </motion.div>
+                  ) : (
+                    <div className="hidden lg:block">
+                      <motion.div
+                        initial={{ opacity: 0, x: -30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        className="p-8 text-right"
+                      >
+                         <h4 className="text-[11px] font-black text-zinc-700 uppercase tracking-[0.3em] mb-4">Strategic Intelligence</h4>
+                         <p className="text-zinc-500 text-sm font-medium leading-relaxed">
+                            {step.summary} This modular architecture ensures high availability and zero-data loss during critical HR operations.
+                         </p>
+                      </motion.div>
                     </div>
-                    <p className="text-slate-500 text-sm font-medium leading-relaxed mb-6 italic">"{step.summary}"</p>
-                    <DetailBox items={step.details} side="right" />
-                  </motion.div>
-                ) : (
-                  <div className="hidden lg:block text-left pl-8">
-                    <DetailBox items={step.details} side="right" />
-                  </div>
-                )}
+                  )}
+                </div>
+
+                <div className={`${step.side === 'right' ? 'lg:order-2' : 'lg:order-2'}`}>
+                  {step.side === 'right' ? (
+                    <motion.div 
+                      initial={{ opacity: 0, x: 60 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      className="group bg-zinc-950/80 backdrop-blur-xl p-10 rounded-[2.5rem] border border-zinc-800/80 shadow-2xl hover:border-blue-500/30 transition-all duration-700 hover:-translate-y-2"
+                    >
+                      <div className="flex items-center gap-6 mb-8">
+                        <div className={`p-4 rounded-2xl bg-${step.color}-600/10 border border-${step.color}-500/20 text-${step.color}-400 group-hover:bg-${step.color}-500 group-hover:text-white transition-all duration-500`}>
+                          <step.icon className="w-7 h-7" />
+                        </div>
+                        <div>
+                          <span className="text-[10px] font-black text-blue-500 uppercase tracking-[0.2em]">{step.phase}</span>
+                          <h3 className="text-2xl font-black text-white tracking-tight mt-1">{step.title}</h3>
+                        </div>
+                      </div>
+                      <p className="text-zinc-500 text-sm font-medium leading-relaxed mb-8 italic font-serif">"{step.summary}"</p>
+                      
+                      <DetailGrid details={step.details} side="right" />
+                      <TechnicalSpecs items={step.technical} side="right" />
+                    </motion.div>
+                  ) : (
+                    <div className="hidden lg:block">
+                      <motion.div
+                        initial={{ opacity: 0, x: 30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        className="p-8 text-left"
+                      >
+                         <h4 className="text-[11px] font-black text-zinc-700 uppercase tracking-[0.3em] mb-4">Core Infrastructure</h4>
+                         <p className="text-zinc-500 text-sm font-medium leading-relaxed">
+                            Implementing high-fidelity data extraction and semantic mapping allows for {step.title.toLowerCase()} with unparalleled precision.
+                         </p>
+                      </motion.div>
+                    </div>
+                  )}
+                </div>
               </div>
+            ))}
+          </div>
+        </main>
+
+        <footer className="bg-zinc-950 py-32 px-6 relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-zinc-800 to-transparent" />
+          <div className="max-w-7xl mx-auto flex flex-col items-center text-center relative z-10">
+            <div className="w-20 h-20 rounded-3xl bg-blue-600 flex items-center justify-center shadow-2xl shadow-blue-500/20 mb-10 group cursor-pointer hover:rotate-12 transition-transform duration-500">
+              <ShieldCheck className="w-10 h-10 text-white" />
             </div>
-          ))}
-        </div>
-      </main>
-
-      <footer className="bg-slate-900 py-20 px-6 text-center">
-        <ShieldCheck className="w-12 h-12 text-blue-500 mx-auto mb-6" />
-        <h2 className="text-2xl font-black text-white mb-4 tracking-tighter uppercase">Devtri Seczone Architecture</h2>
-        <p className="text-slate-500 text-sm max-w-lg mx-auto mb-12 font-medium">
-          Proprietary recruitment automation framework. Built for performance, designed for human-centric talent acquisition.
-        </p>
-        <div className="flex justify-center gap-8 text-[10px] font-bold text-slate-600 uppercase tracking-[0.3em]">
-          <span>Cloud Native</span>
-          <span>AI Augmented</span>
-          <span>Secure Edge</span>
-        </div>
-      </footer>
-    </div>
+            <h2 className="text-3xl font-black text-white mb-6 tracking-tighter uppercase">Devtri Seczone Architecture</h2>
+            <p className="text-zinc-500 text-lg max-w-xl mb-16 font-medium leading-relaxed">
+              Proprietary recruitment automation framework. Built for performance, designed for security, optimized for the future.
+            </p>
+            <div className="flex flex-wrap justify-center gap-12 text-[10px] font-black text-zinc-600 uppercase tracking-[0.5em]">
+              <span className="hover:text-blue-500 transition-colors">Cloud Native</span>
+              <span className="hover:text-blue-500 transition-colors">AI Augmented</span>
+              <span className="hover:text-blue-500 transition-colors">Zero Trust</span>
+              <span className="hover:text-blue-500 transition-colors">Full Audit</span>
+            </div>
+          </div>
+        </footer >
+      </div >
+    </div >
   );
 }
